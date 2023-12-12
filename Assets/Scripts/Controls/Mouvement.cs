@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Mouvement : MonoBehaviour
 {
-    public float moveSpeed;
+    [SerializeField] private float moveSpeed;
 
-    public Transform orientation;
+    [SerializeField] private Transform orientation;
 
     float horizontalInput;
     float verticalInput;
@@ -26,15 +26,15 @@ public class Mouvement : MonoBehaviour
         MyInput();
     }
 
-    private void FixUpdate()
+    private void FixedUpdate()
     {
         MovePlayer();
     }
 
     private void MyInput()
     {
-        horizontalInput = horizontalInput.GetAxisRaw("Horizontal");
-        verticalInput = verticalInput.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");    
     }
 
     private void MovePlayer()
