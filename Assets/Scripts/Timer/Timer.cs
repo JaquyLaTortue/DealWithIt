@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     public float temps = 10;
     public TMP_Text timertext;
     public int tempsint;
+    
+   
 
     void Start()
     {
@@ -33,4 +35,6 @@ public class Timer : MonoBehaviour
 
         }
     }
+
+    
 }
