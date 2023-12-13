@@ -19,6 +19,7 @@ public class Jump : MonoBehaviour
     public void JumpAction(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || !_canJump) return;
+        Debug.Log("Jump");
         rb.velocity = Vector3.up * jumpForce;
         _canJump = false;
     }

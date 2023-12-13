@@ -1,26 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Move : MonoBehaviour
 {
-    private CharacterController _characterController;
-    [SerializeField] private float _moveSpeed = 5f;
+    //Define at wich speed the player moves
+    public float speed;
 
-    private void Awake()
+    //Stores the value of the move input
+    Vector3 _moveDirection;
+
+    //gets the value of the move input
+    public void OnMove(InputAction.CallbackContext context)
     {
-        _characterController = GetComponent<CharacterController>();
+        _moveDirection = context.ReadValue<Vector2>();
     }
 
-    private void Update()
+    //will update the player position by the move input
+    void Update()
     {
-        Vector3 inputDirection = new Vector3()
-        {
-            x = Input.GetAxis("Horizontal"),
-            y = 0,
-            z = Input.GetAxis("Vertical")
-        };
+        Vector3 moveDirection = new Vector3(_moveDirection.x, 0, _moveDirection.y);
+        transform.Translate(moveDirection * (speed * Time.deltaTime));
 
-        Vector3 velocity = inputDirection * _moveSpeed * Time.deltaTime;
-        _characterController.Move(velocity);
-        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
     }
 }
