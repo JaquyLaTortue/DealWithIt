@@ -34,7 +34,7 @@ public class PlaceObject : MonoBehaviour
         }
 
     }
-    public void Place(InputAction.CallbackContext ctx)
+    public void OnPlace(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || !_canPlace) return;
         Instantiate(_object, _ghost.transform.position, Quaternion.identity);

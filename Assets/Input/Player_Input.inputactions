@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Place",
-                    "type": "Button",
-                    "id": "866840d9-9009-49fd-b624-8d6228bb589d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "9e924a3e-d44a-495d-88c0-e110980ea512",
@@ -45,6 +36,15 @@
                     "name": "Sneak",
                     "type": "Button",
                     "id": "0adf1b9b-4a22-4c09-96fa-d556db50fa25",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Place",
+                    "type": "Button",
+                    "id": "866840d9-9009-49fd-b624-8d6228bb589d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -164,17 +164,6 @@
                 },
                 {
                     "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Place",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "071a3452-9fbc-492a-ab3f-54b22787047c",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -192,6 +181,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sneak",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Place",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -229,18 +229,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Guess",
+                    "name": "Sneak",
                     "type": "Button",
-                    "id": "324ff1d6-ef38-476d-b7e0-b4302766ca70",
+                    "id": "24f51a94-a5a9-43f9-9122-5a3995759995",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sneak",
+                    "name": "Guess",
                     "type": "Button",
-                    "id": "24f51a94-a5a9-43f9-9122-5a3995759995",
+                    "id": "324ff1d6-ef38-476d-b7e0-b4302766ca70",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -404,6 +404,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4be6fada-607a-44dc-a682-b05cf3367132",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sneak",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "aad8ec33-b4ea-43d7-9e46-907516551f9e",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -421,17 +432,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Guess",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4be6fada-607a-44dc-a682-b05cf3367132",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sneak",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

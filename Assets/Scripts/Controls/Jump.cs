@@ -16,7 +16,7 @@ public class Jump : MonoBehaviour
     }
 
     //the player jumps by the JumpForce when the space bar is pressed 
-    public void JumpAction(InputAction.CallbackContext ctx)
+    public void OnJump(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || !_canJump) return;
         Debug.Log("Jump");
