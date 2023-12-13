@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Cam_Controler : MonoBehaviour
@@ -21,10 +19,8 @@ public class Cam_Controler : MonoBehaviour
     {
         xRotation -= Input.GetAxis("Mouse Y") * Sensitivity * Time.deltaTime;
         yRotation += Input.GetAxis("Mouse X") * Sensitivity * Time.deltaTime;
-
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0, 0f);
         Orientation.localRotation = Quaternion.Euler(0f, yRotation, 0f);
     }
 }
