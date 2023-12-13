@@ -15,15 +15,24 @@ public class PlaceObject : MonoBehaviour
 
     private void Start()
     {
-        _ghost = Instantiate(ghost, this.transform.position, Quaternion.identity);
+        _ghost = Instantiate(ghost, transform.position, Quaternion.identity);
     }
     private void Update()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.blue);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, layerMask))
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.blue);
+            _ghost.SetActive(true);
             _ghost.transform.position = hit.point;
+            _canPlace = true;
         }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.red);
+            _ghost.SetActive(false);
+            _canPlace = false;
+        }
+
     }
     public void Place(InputAction.CallbackContext ctx)
     {
