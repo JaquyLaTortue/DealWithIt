@@ -4,7 +4,18 @@ using UnityEngine.InputSystem;
 public class Move : MonoBehaviour
 {
     //Define at wich speed the player moves
-    public float speed;
+    public float InitialSpeed;
+
+    [SerializeField] private float Speed;
+
+    private void Start()
+    {
+        Speed = InitialSpeed;
+    }
+    public void SetSneakSpeed(float desiredSpeed)
+    {
+        Speed = desiredSpeed;
+    }
 
     //Stores the value of the move input
     Vector3 _moveDirection;
@@ -19,7 +30,7 @@ public class Move : MonoBehaviour
     void Update()
     {
         Vector3 moveDirection = new Vector3(_moveDirection.x, 0, _moveDirection.y);
-        transform.Translate(moveDirection * (speed * Time.deltaTime));
+        transform.Translate(moveDirection * (Speed * Time.deltaTime));
 
     }
 }
