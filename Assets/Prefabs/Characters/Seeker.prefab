@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 5169795163331795842}
   - component: {fileID: 7073383692848867671}
   - component: {fileID: 3866701075580122520}
+  - component: {fileID: 4037945890412307363}
   - component: {fileID: 1275425727026609408}
   m_Layer: 3
   m_Name: Seeker
@@ -505,6 +506,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 7
   _canJump: 1
+--- !u!114 &4037945890412307363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8709939973482529981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71deb9a2ab7f7c14fad2c7b7fea55510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sneak: 0.5
 --- !u!114 &1275425727026609408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +657,19 @@ MonoBehaviour:
     m_ActionId: 0adf1b9b-4a22-4c09-96fa-d556db50fa25
     m_ActionName: Hider/Sneak[/Keyboard/leftCtrl]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4037945890412307363}
+        m_TargetAssemblyTypeName: Sneak, Assembly-CSharp
+        m_MethodName: OnSneak
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 24f51a94-a5a9-43f9-9122-5a3995759995
     m_ActionName: Seeker/Sneak[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
