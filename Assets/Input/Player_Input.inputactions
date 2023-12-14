@@ -34,12 +34,12 @@
                 },
                 {
                     "name": "Sneak",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0adf1b9b-4a22-4c09-96fa-d556db50fa25",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Place",
