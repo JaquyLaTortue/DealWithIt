@@ -8,7 +8,7 @@ public class PlaceObject : MonoBehaviour
     [SerializeField] GameObject ghost;
     GameObject _ghost;
     public LayerMask layerMask;
-
+    [SerializeField] int range = 15;
     bool _canPlace = true;
 
     RaycastHit hit;
@@ -19,20 +19,19 @@ public class PlaceObject : MonoBehaviour
     }
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.blue);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
             _ghost.SetActive(true);
             _ghost.transform.position = hit.point;
             _canPlace = true;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.red);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.red);
             _ghost.SetActive(false);
             _canPlace = false;
         }
-
     }
     public void OnPlace(InputAction.CallbackContext ctx)
     {

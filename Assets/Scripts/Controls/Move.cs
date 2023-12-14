@@ -44,7 +44,7 @@ public class Move : MonoBehaviour
         //transform.Translate(moveDirection * (Speed * Time.deltaTime));
         
         _moveDirection = transform.forward * _verticalInput + transform.right * _horizontalInput;
-        rb.AddForce(_moveDirection.normalized * Speed * 10f, ForceMode.Force);
+        rb.AddForce(_moveDirection.normalized * Speed * 1f, ForceMode.Force);
 
     }
 }

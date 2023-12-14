@@ -7,8 +7,10 @@ public class Guess : MonoBehaviour
     [SerializeField] LayerMask Props;
     [SerializeField] LayerMask Target;
 
-    [SerializeField] int MaxGuess;
-    [SerializeField] int RemainingGuess;
+    [SerializeField] int maxGuess;
+    [SerializeField] int remainingGuess;
+
+    [SerializeField] int range;
 
     public event Action OnTargetFound;
     public event Action<String> OnGuessFailed;
@@ -17,7 +19,7 @@ public class Guess : MonoBehaviour
 
     private void Start()
     {
-        RemainingGuess = MaxGuess;
+        remainingGuess = maxGuess;
 
         OnTargetFound += SuccessfulGuess;
         OnGuessFailed += FailedGuess;
@@ -25,12 +27,12 @@ public class Guess : MonoBehaviour
 
     public void OnGuess(InputAction.CallbackContext ctx)
     {
-        if (!ctx.started || RemainingGuess <= 0) return;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, Target))
+        if (!ctx.started || remainingGuess <= 0) return;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Target))
         {
             OnTargetFound?.Invoke();
         }
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, Props))
+        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Props))
         {
             OnGuessFailed?.Invoke("Prop");
         }
@@ -42,15 +44,15 @@ public class Guess : MonoBehaviour
 
     void SuccessfulGuess()
     {
-        RemainingGuess--;
+        remainingGuess--;
         Debug.Log($"You found the target");
     }
 
     void FailedGuess(string str)
     {
-        RemainingGuess--;
+        remainingGuess--;
         Debug.Log($"You found: {str}");
-        if (RemainingGuess <= 0)
+        if (remainingGuess <= 0)
         {
             Debug.Log($"No remaining guess");
         }
@@ -59,17 +61,17 @@ public class Guess : MonoBehaviour
     //To be deleted Then
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, Target))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Target))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.blue);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
         }
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, Props))
+        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Props))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.red);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.red);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.black);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.black);
         }
 
 
