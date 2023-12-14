@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sensitivity: 400
   Orientation: {fileID: 5129914622356413154}
-  CursorInGame: {fileID: 2800000, guid: c8fc4cd6e8ca9164882436fe302fad1a, type: 3}
 --- !u!114 &7769313942734054379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +118,8 @@ MonoBehaviour:
   Target:
     serializedVersion: 2
     m_Bits: 128
+  MaxGuess: 0
+  RemainingGuess: 0
 --- !u!81 &7502242210285795308
 AudioListener:
   m_ObjectHideFlags: 0
@@ -491,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1151a594f15afb643a166b9fbda6c818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  InitialSpeed: 1
 --- !u!114 &3866701075580122520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71deb9a2ab7f7c14fad2c7b7fea55510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sneak: 0.5
+  SneakHeight: 0.5
+  SneakSpeed: 5
+  MoveScript: {fileID: 7073383692848867671}
 --- !u!114 &1275425727026609408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,10 +551,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 218ac617-8fee-4751-bba6-c1753e86d38f
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e318a533-720d-4239-9334-28d1099cd16c
-    m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 866840d9-9009-49fd-b624-8d6228bb589d
@@ -616,10 +615,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9dceeb9e-22ff-4261-8b3d-11d799706eee
     m_ActionName: Seeker/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bd1a03bc-535f-40d1-8b1c-be962731411d
-    m_ActionName: Seeker/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3866701075580122520}
