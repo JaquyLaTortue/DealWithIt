@@ -1,42 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
-using UnityEngine.Windows;
 
 
 public class Sneak : MonoBehaviour
 {
-    Rigidbody rb;
     public bool Crouch { get; private set; }
 
-    public float sneak = 2f;
+    public float SneakHeight = 0.5f;
 
-    private void Awake()
+    public float SneakSpeed;
+
+    [SerializeField] Move MoveScript;
+
+    public void OnSneak(InputAction.CallbackContext ctx)
     {
-        rb = GetComponent<Rigidbody>();
-    }
+        if (ctx.started)
+        {
 
-    private InputAction _crouchAction;
+            //gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - sneak, gameObject.transform.position.z);
+            gameObject.transform.localScale = new Vector3(1, SneakHeight, 1);
+            MoveScript.SetSneakSpeed(SneakSpeed);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void Sneaking(InputAction.CallbackContext ctx)
-    {
-        if (!ctx.started) return;
-        Debug.Log("ah");
-        rb.position = Vector3.up / sneak;
+        }
+        else if (ctx.canceled)
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            MoveScript.SetSneakSpeed(MoveScript.InitialSpeed);
+        }
         
     }
 }

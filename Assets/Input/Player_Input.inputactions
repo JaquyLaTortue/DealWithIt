@@ -34,12 +34,12 @@
                 },
                 {
                     "name": "Sneak",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0adf1b9b-4a22-4c09-96fa-d556db50fa25",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Place",
@@ -177,6 +177,17 @@
                     "name": "",
                     "id": "83425bba-9197-4309-8c59-9c09de6e2711",
                     "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sneak",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3201fae6-7366-4875-b125-4dfea75e5dba",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -406,6 +417,17 @@
                     "name": "",
                     "id": "4be6fada-607a-44dc-a682-b05cf3367132",
                     "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sneak",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8131ab0a-41af-445c-a310-3889784bf581",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

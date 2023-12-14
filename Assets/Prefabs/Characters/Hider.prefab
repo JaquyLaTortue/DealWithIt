@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 3510088735276590192}
   - component: {fileID: 3069180926652658506}
   - component: {fileID: 2775807604473444235}
+  - component: {fileID: 9015890197451318933}
   - component: {fileID: 2354189999220832104}
   m_Layer: 3
   m_Name: Hider
@@ -378,6 +379,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 7
   _canJump: 1
+--- !u!114 &9015890197451318933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828467809593186410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71deb9a2ab7f7c14fad2c7b7fea55510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sneak: 0.5
 --- !u!114 &2354189999220832104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +510,19 @@ MonoBehaviour:
     m_ActionId: 9e924a3e-d44a-495d-88c0-e110980ea512
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9015890197451318933}
+        m_TargetAssemblyTypeName: Sneak, Assembly-CSharp
+        m_MethodName: OnSneak
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0adf1b9b-4a22-4c09-96fa-d556db50fa25
     m_ActionName: Hider/Sneak[/Keyboard/leftCtrl]
   - m_PersistentCalls:
