@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,11 +14,17 @@ public class Guess : MonoBehaviour
 
     [SerializeField] int range;
 
+    [SerializeField] TMP_Text guessResult;
+
+    RaycastHit hit;
+
+    //Events for the different guesses possible
     public event Action<GameObject> OnTargetFound;
     public event Action<GameObject> OnPropGuess;
     public event Action OnFailedGuess;
 
-    RaycastHit hit;
+    //Events triggered when the phase is over
+    //public event Action OnPhaseEnded;
 
     private void Start()
     {
@@ -26,6 +33,7 @@ public class Guess : MonoBehaviour
         OnTargetFound += SuccessfulGuess;
         OnPropGuess += PropGuess;
         OnFailedGuess += FailedGuess;
+        Debug.Log(gameObject.transform.parent.gameObject);
     }
 
     public void OnGuess(InputAction.CallbackContext ctx)
@@ -49,14 +57,14 @@ public class Guess : MonoBehaviour
     void SuccessfulGuess(GameObject go)
     {
         remainingGuess--;
-        Debug.Log($"You found the target");
+        guessResult.text ="You found the target";
     }
 
     void PropGuess(GameObject go)
     {
         remainingGuess--;
         go.transform.DOShakePosition(1f, 0.1f, 5, 90, false, true);
-        Debug.Log($"You found a prop");
+        guessResult.text = "You found a prop";
         if (remainingGuess <= 0)
         {
             Debug.Log($"No remaining guess");
@@ -66,7 +74,7 @@ public class Guess : MonoBehaviour
     void FailedGuess()
     {
         remainingGuess--;
-        Debug.Log($"You found nothing");
+        guessResult.text = "You found nothing";
         if (remainingGuess <= 0)
         {
             Debug.Log($"No remaining guess");

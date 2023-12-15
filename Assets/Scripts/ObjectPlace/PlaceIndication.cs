@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ObjectPlace : MonoBehaviour
+public class PlaceIndication : MonoBehaviour
 {
     public TMP_Text ColorText;
     public TMP_Text AdjectifText;

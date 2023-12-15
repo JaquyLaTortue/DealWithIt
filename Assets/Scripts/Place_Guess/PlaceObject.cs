@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,9 @@ public class PlaceObject : MonoBehaviour
     bool _canPlace = true;
 
     RaycastHit hit;
+
+    //Events triggered when the phase is over
+    //public event Action OnPhaseEnded;
 
     private void Start()
     {
