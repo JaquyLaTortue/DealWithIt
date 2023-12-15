@@ -111,8 +111,11 @@ public class SwitchPhase : MonoBehaviour
     //Guess phase Functions
     public void GuessStart()
     {
-        Debug.Log("Guess Start");
+        generalCamera.SetActive(false);
         seeker.SetActive(true);
+        seekerCanvas.SetActive(true);
+        //seekerCanvas.GetComponent<Animator>().SetTrigger("FadeIn");
+        _cursorManager.SetSpecialCursor();
     }
 
     public void GuessEnded()
