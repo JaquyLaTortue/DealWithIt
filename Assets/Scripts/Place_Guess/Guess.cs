@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,8 +13,9 @@ public class Guess : MonoBehaviour
 
     [SerializeField] int range;
 
-    public event Action OnTargetFound;
-    public event Action<String> OnGuessFailed;
+    public event Action<GameObject> OnTargetFound;
+    public event Action<GameObject> OnPropGuess;
+    public event Action OnFailedGuess;
 
     RaycastHit hit;
 
@@ -22,7 +24,8 @@ public class Guess : MonoBehaviour
         remainingGuess = maxGuess;
 
         OnTargetFound += SuccessfulGuess;
-        OnGuessFailed += FailedGuess;
+        OnPropGuess += PropGuess;
+        OnFailedGuess += FailedGuess;
     }
 
     public void OnGuess(InputAction.CallbackContext ctx)
@@ -30,28 +33,40 @@ public class Guess : MonoBehaviour
         if (!ctx.started || remainingGuess <= 0) return;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Target))
         {
-            OnTargetFound?.Invoke();
+            OnTargetFound?.Invoke(hit.collider.gameObject);
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Props))
         {
-            OnGuessFailed?.Invoke("Prop");
+            OnPropGuess?.Invoke(hit.collider.gameObject);
+
         }
         else
         {
-            OnGuessFailed?.Invoke("Nothing");
+            OnFailedGuess?.Invoke();
         }
     }
 
-    void SuccessfulGuess()
+    void SuccessfulGuess(GameObject go)
     {
         remainingGuess--;
         Debug.Log($"You found the target");
     }
 
-    void FailedGuess(string str)
+    void PropGuess(GameObject go)
     {
         remainingGuess--;
-        Debug.Log($"You found: {str}");
+        go.transform.DOShakePosition(1f, 0.1f, 5, 90, false, true);
+        Debug.Log($"You found a prop");
+        if (remainingGuess <= 0)
+        {
+            Debug.Log($"No remaining guess");
+        }
+    }
+
+    void FailedGuess()
+    {
+        remainingGuess--;
+        Debug.Log($"You found nothing");
         if (remainingGuess <= 0)
         {
             Debug.Log($"No remaining guess");
