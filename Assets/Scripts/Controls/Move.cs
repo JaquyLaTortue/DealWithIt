@@ -11,6 +11,8 @@ public class Move : MonoBehaviour
 
     public float groundDrag;
 
+    public float airMultiplier;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatisGround;
@@ -64,7 +66,16 @@ public class Move : MonoBehaviour
         //transform.Translate(moveDirection * (Speed * Time.deltaTime));
 
         _moveDirection = transform.forward * _verticalInput + transform.right * _horizontalInput;
-        rb.AddForce(_moveDirection.normalized * Speed * 1f, ForceMode.Force);
+        if (grounded)
+        {
+            rb.AddForce(_moveDirection.normalized * Speed * 1f, ForceMode.Force);
+        }
+        else if (!grounded)
+        {
+            rb.AddForce(_moveDirection.normalized * Speed * 1f * airMultiplier, ForceMode.Force);
+        }
+        
 
     }
+
 }
