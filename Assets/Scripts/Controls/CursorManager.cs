@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] Texture2D cursorTexture;
+    [Header("Cursor Textures")]
+    [SerializeField] Texture2D DefaultCursorTexture;
+    [SerializeField] Texture2D pointCursorTexture;
 
-    private void Start()
+    public void SetSpecialCursor()
     {
-        Cursor.SetCursor(cursorTexture, new Vector2(cursorTexture.width/2, cursorTexture.height/2), CursorMode.ForceSoftware);
+        Cursor.SetCursor(pointCursorTexture, new Vector2(pointCursorTexture.width/2, pointCursorTexture.height/2), CursorMode.ForceSoftware);
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void SetDefaultCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        Cursor.lockState = CursorLockMode.None;
     }
 }

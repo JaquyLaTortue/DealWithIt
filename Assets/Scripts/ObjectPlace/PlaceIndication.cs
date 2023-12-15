@@ -1,36 +1,45 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 public class PlaceIndication : MonoBehaviour
 {
-    public TMP_Text ColorText;
-    public TMP_Text AdjectifText;
-    public TMP_Text FormeText;
+    [Header("Hider Texts")]
+    [SerializeField] TMP_Text HiderColorText;
+    [SerializeField] TMP_Text HiderAdjectifText;
+    [SerializeField]TMP_Text HiderFormeText;
 
+    [Header("Seeker Texts")]
+    [SerializeField] TMP_Text SeekerColorText;
+    [SerializeField] TMP_Text SeekerAdjectifText;
+    [SerializeField] TMP_Text SeekerFormeText;
 
-    List<string> Color = new() {"Green" , "Red", "Yellow", "Bue", "Purple", "Orange", "Cyan", "White", "Black", "Grey"};
-    List<string> Adjectif = new() {"Stable", "Reachable", "Heavy", "Unreachable", "Tough", "Light", "Wood", "Paper", "Carpet", "Iron"};
-    List<string> Forme = new() {"Round", "Square", "Triangle", "Star", "Long", "Big", "Small", "Short", "Oval", "Medium"};
+    [Header("Indications")]
+    [SerializeField] List<string> Color = new() {"Green" , "Red", "Yellow", "Bue", "Purple", "Orange", "Cyan", "White", "Black", "Grey"};
+    [SerializeField] List<string> Adjectif = new() {"Stable", "Reachable", "Heavy", "Unreachable", "Tough", "Light", "Wood", "Paper", "Carpet", "Iron"};
+    [SerializeField] List<string> Forme = new() {"Round", "Square", "Triangle", "Star", "Long", "Big", "Small", "Short", "Oval", "Medium"};
 
-    int ChoixRandom()
+    string[] Indications = new string[3];
+    void RandomChoice()
     {
-        int Choix = Random.Range(0, 9);
-        return Choix;
+        Indications[0] = Color[Random.Range(0, Color.Count - 1)];
+        Indications[1] = Adjectif[Random.Range(0, Adjectif.Count - 1)];
+        Indications[2] = Forme[Random.Range(0, Forme.Count - 1)];
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        ColorText.text = ($"- {Color[ChoixRandom()]}");
-        AdjectifText.text = ($"- {Adjectif[ChoixRandom()]}");
-        FormeText.text = ($"- {Forme[ChoixRandom()]}");
-    }
+        RandomChoice();
+        HiderColorText.text = Indications[0];
+        HiderAdjectifText.text = Indications[1];
+        HiderFormeText.text = Indications[2];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SeekerColorText.text = Indications[0];
+        SeekerAdjectifText.text = Indications[1];
+        SeekerFormeText.text = Indications[2];
     }
 }
