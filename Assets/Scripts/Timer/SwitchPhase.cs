@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class SwitchPhase : MonoBehaviour
@@ -12,60 +10,113 @@ public class SwitchPhase : MonoBehaviour
 
     [Header("Player References & Camera")]
     [SerializeField] GameObject hider;
-    [SerializeField] GameObject seeker;
-    [SerializeField] Camera generalCamera;
+    [SerializeField] GameObject hiderCamera;
 
-    [Header("Canvas References")]
+    [SerializeField] GameObject seeker;
+
+    [SerializeField] GameObject generalCamera;
+
+    [Header("Hider Canvas References")]
     [SerializeField] GameObject hiderCanvas;
+    [SerializeField] GameObject objectPlacedUI;
+
+    [Header("SeekerCanvas References")]
     [SerializeField] GameObject seekerCanvas;
+
+    [Header("General Canvas References")]
     [SerializeField] GameObject generalCanvas;
+    [SerializeField] GameObject startingGeneralUI;
+    [SerializeField] GameObject betweenPhaseGeneralUI;
 
     [Header("Animation References")]
-    [SerializeField] AnimationClip _FadeIn;
+    [SerializeField] AnimationClip _fadeOutAnim;
+    [SerializeField] AnimationClip _placeFadeOutAnim;
     Animator _generalCanvasAnimator;
+    Animator _hiderCanvasAnimator;
 
-    private void Start()
+    void Start()
     {
-        //_guessScript.OnPhaseEnded += GuessEnded;
-        //_placeObjectScript.OnPhaseEnded += PlaceEnded;
+        _placeObjectScript.OnObjectPlaced += ObjectPlaced;
+        _placeObjectScript.OnPhaseEnded += PlaceFadeOut;
+        _placeObjectScript.OnObjectPlacementCancelled += ObjectPlacementCancelled;
+        _guessScript.OnPhaseEnded += GuessEnded;
 
         _generalCanvasAnimator = generalCanvas.GetComponent<Animator>();
+        _hiderCanvasAnimator = hiderCanvas.GetComponent<Animator>();
     }
 
-    public void FadeIn()
+    //Do a Fadeout on the general canvas and start the place phase
+
+    public void StartingFadeOut()
     {
-        _generalCanvasAnimator.SetTrigger("FadeIn");
-        StartCoroutine(WaitForFadeOut(_FadeIn.length));
+        _generalCanvasAnimator.SetTrigger("FadeOut");
+        StartCoroutine(WaitForStartingFadeOut(_fadeOutAnim.length));
+    }
+    IEnumerator WaitForStartingFadeOut(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        generalCamera.SetActive(false);
+        startingGeneralUI.SetActive(false);
+        generalCanvas.SetActive(false);
+        PlaceStart();
     }
 
-    public void PlaceStart()
+
+    //Place phase Functions
+    void PlaceStart()
     {
         hider.SetActive(true);
+        hiderCanvas.SetActive(true);
+        _hiderCanvasAnimator.SetTrigger("FadeIn");
         _cursorManager.SetSpecialCursor();
     }
 
-    public void GuessStart()
+    void ObjectPlaced()
     {
-
+        objectPlacedUI.SetActive(true);
+        hiderCamera.GetComponent<Cam_Controler>().enabled = false;
     }
 
-    public void PlaceEnded()
+    void ObjectPlacementCancelled()
     {
-        _cursorManager.SetDefaultCursor();
-        _placeObjectScript.transform.parent.gameObject.SetActive(false);
-        _guessScript.transform.parent.gameObject.SetActive(true);
+        objectPlacedUI.SetActive(false);
+        hiderCamera.GetComponent<Cam_Controler>().enabled = true;
+    }
+
+    void PlaceFadeOut()
+    {
+        objectPlacedUI.SetActive(false);
+        _hiderCanvasAnimator.SetTrigger("FadeOut");
+        StartCoroutine(WaitForPlaceFadeOut(_placeFadeOutAnim.length));
+    }
+
+    IEnumerator WaitForPlaceFadeOut(float duration)
+    {
+        yield return new WaitForSeconds(2);
+        PlaceEnded();
+    }
+
+    void PlaceEnded()
+    {
+        hider.SetActive(false);
+        hiderCanvas.SetActive(false);
+
+        generalCamera.SetActive(true);
+        generalCanvas.SetActive(true);
+        _generalCanvasAnimator.SetTrigger("FadeInBetweenPhase");
+        betweenPhaseGeneralUI.SetActive(true);
+    }
+
+
+    //Guess phase Functions
+    public void GuessStart()
+    {
+        Debug.Log("Guess Start");
+        seeker.SetActive(true);
     }
 
     public void GuessEnded()
     {
         _guessScript.transform.parent.gameObject.SetActive(false);
     }
-
-    IEnumerator WaitForFadeOut(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        generalCamera.gameObject.SetActive(false);
-        PlaceStart();
-    }
-
 }
