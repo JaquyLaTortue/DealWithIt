@@ -9,6 +9,13 @@ public class Move : MonoBehaviour
     public float InitialSpeed;
     private float Speed;
 
+    public float groundDrag;
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatisGround;
+    bool grounded;
+
     [Header("Axis")]
     private float _horizontalInput;
     private float _verticalInput;
@@ -24,6 +31,7 @@ public class Move : MonoBehaviour
         Speed = InitialSpeed;
         rb = GetComponent<Rigidbody>();
     }
+
     public void SetSneakSpeed(float desiredSpeed)
     {
         Speed = desiredSpeed;
@@ -38,11 +46,23 @@ public class Move : MonoBehaviour
     }
 
     //will update the player position by the move input
-    void Update()
+    private void Update()
     {
+        //ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatisGround);
+
+        //handle drag
+        if (grounded)
+        {
+            rb.drag = groundDrag;
+        }
+        else
+        {
+            rb.drag = 0;
+        }
         //Vector3 moveDirection = new Vector3(_horizontalInout, 0, _verticalInput);
         //transform.Translate(moveDirection * (Speed * Time.deltaTime));
-        
+
         _moveDirection = transform.forward * _verticalInput + transform.right * _horizontalInput;
         rb.AddForce(_moveDirection.normalized * Speed * 1f, ForceMode.Force);
 
