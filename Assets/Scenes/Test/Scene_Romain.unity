@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 396212172}
   - component: {fileID: 396212171}
   - component: {fileID: 396212170}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2306,6 +2306,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836735135}
   m_CullTransparentMesh: 1
+--- !u!114 &881535055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2775807604473444235, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+  m_PrefabInstance: {fileID: 1684958905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476cf129d01d0ba479a23b225f8e308c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &937868589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,6 +3303,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 881535055}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Jump, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2429909323506175280, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3332,13 +3355,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2775807604473444235, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: _canJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775807604473444235, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: jumpForce
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3069180926652658506, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
-      propertyPath: Speed
-      value: 0
+      propertyPath: jumpForce
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 3069180926652658506, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: InitialSpeed
-      value: 10
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069180926652658506, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: airMultiplier
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3828467809593186410, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_Name
@@ -3346,7 +3381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015890197451318933, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: SneakSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

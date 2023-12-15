@@ -364,7 +364,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1151a594f15afb643a166b9fbda6c818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSpeed: 5
+  InitialSpeed: 10
+  groundDrag: 5
+  playerHeight: 1
+  whatisGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &2775807604473444235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71deb9a2ab7f7c14fad2c7b7fea55510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SneakHeight: 0.5
-  SneakSpeed: 10
+  SneakHeight: 0.25
+  SneakSpeed: 5
   MoveScript: {fileID: 3069180926652658506}
 --- !u!114 &2354189999220832104
 MonoBehaviour:

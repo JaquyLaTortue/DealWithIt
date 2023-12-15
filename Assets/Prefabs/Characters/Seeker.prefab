@@ -121,6 +121,7 @@ MonoBehaviour:
   maxGuess: 5
   remainingGuess: 0
   range: 5
+  guessResult: {fileID: 0}
 --- !u!81 &7502242210285795308
 AudioListener:
   m_ObjectHideFlags: 0
@@ -493,7 +494,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1151a594f15afb643a166b9fbda6c818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSpeed: 1
+  InitialSpeed: 10
+  groundDrag: 5
+  playerHeight: 1
+  whatisGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &3866701075580122520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476cf129d01d0ba479a23b225f8e308c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 7
+  jumpForce: 3.5
   _canJump: 1
 --- !u!114 &4037945890412307363
 MonoBehaviour:
@@ -520,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71deb9a2ab7f7c14fad2c7b7fea55510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SneakHeight: 0.5
+  SneakHeight: 0.25
   SneakSpeed: 5
   MoveScript: {fileID: 7073383692848867671}
 --- !u!114 &1275425727026609408
