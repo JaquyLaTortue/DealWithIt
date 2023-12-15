@@ -24,7 +24,7 @@ public class Guess : MonoBehaviour
     public event Action OnFailedGuess;
 
     //Events triggered when the phase is over
-    //public event Action OnPhaseEnded;
+    public event Action OnPhaseEnded;
 
     private void Start()
     {
