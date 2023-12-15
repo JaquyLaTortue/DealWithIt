@@ -33,7 +33,6 @@ public class Guess : MonoBehaviour
         OnTargetFound += SuccessfulGuess;
         OnPropGuess += PropGuess;
         OnFailedGuess += FailedGuess;
-        Debug.Log(gameObject.transform.parent.gameObject);
     }
 
     public void OnGuess(InputAction.CallbackContext ctx)
