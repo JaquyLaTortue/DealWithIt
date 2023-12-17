@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +11,7 @@ public class Guess : MonoBehaviour
     [SerializeField] LayerMask Target;
 
     [SerializeField] int maxGuess;
-    [SerializeField] int remainingGuess;
+    public int remainingGuess { get; private set; }
 
     [SerializeField] int range;
 
@@ -24,7 +25,7 @@ public class Guess : MonoBehaviour
     public event Action OnFailedGuess;
 
     //Events triggered when the phase is over
-    public event Action OnPhaseEnded;
+    public event Action<bool> OnPhaseEnded;
 
     private void Start()
     {
@@ -53,49 +54,46 @@ public class Guess : MonoBehaviour
         }
     }
 
+    //Called when the player found the target
     void SuccessfulGuess(GameObject go)
     {
         remainingGuess--;
-        guessResult.text ="You found the target";
+        go.transform.DOShakeRotation(1f, 90, 10, 90, false);
+        guessResult.text = "You found the target";
+        GuessEnd(true);
     }
 
+
+    //Called when the player failed a guess to a prop
     void PropGuess(GameObject go)
     {
         remainingGuess--;
-        go.transform.DOShakePosition(1f, 0.1f, 5, 90, false, true);
+        go.transform.DOShakePosition(1f, 0.1f, 10, 90, false, true);
         guessResult.text = "You found a prop";
         if (remainingGuess <= 0)
         {
-            Debug.Log($"No remaining guess");
+            GuessEnd(false);
         }
     }
 
+    //Called when the player failed a guess on nothing 
     void FailedGuess()
     {
-        remainingGuess--;
-        guessResult.text = "You found nothing";
-        if (remainingGuess <= 0)
-        {
-            Debug.Log($"No remaining guess");
-        }
+        guessResult.text = "Try again You found nothing and you can't find air ou a wall";
     }
 
-    //To be deleted Then
-    private void Update()
+    void GuessEnd(bool TargetFound)
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Target))
+        
+        if (TargetFound)
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
-        }
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, Props))
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.red);
+            Debug.Log($"You found the target");
+        OnPhaseEnded?.Invoke(true);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.black);
+            Debug.Log($"You didn't find the target");
+        OnPhaseEnded?.Invoke(false);
         }
-
-
     }
 }

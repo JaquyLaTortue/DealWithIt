@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SwitchPhase : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SwitchPhase : MonoBehaviour
     [SerializeField] GameObject hiderCamera;
 
     [SerializeField] GameObject seeker;
+    [SerializeField] GameObject seekerCamera;
 
     [SerializeField] GameObject generalCamera;
 
@@ -31,6 +33,8 @@ public class SwitchPhase : MonoBehaviour
     [Header("Animation References")]
     [SerializeField] AnimationClip _fadeOutAnim;
     [SerializeField] AnimationClip _placeFadeOutAnim;
+    [SerializeField] AnimationClip _fadeOutBetweenPhaseAnim;
+
     Animator _generalCanvasAnimator;
     Animator _hiderCanvasAnimator;
 
@@ -109,17 +113,33 @@ public class SwitchPhase : MonoBehaviour
 
 
     //Guess phase Functions
-    public void GuessStart()
+    public void BetweenPhaseFadeOut()
+    {
+        _generalCanvasAnimator.SetTrigger("FadeOutBetweenPhase");
+        StartCoroutine(WaitForBetweenPhaseFadeOut(_fadeOutBetweenPhaseAnim.length));
+    }
+    IEnumerator WaitForBetweenPhaseFadeOut(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        betweenPhaseGeneralUI.SetActive(false);
+        generalCanvas.SetActive(false);
+        GuessStart();
+    }
+    void GuessStart()
     {
         generalCamera.SetActive(false);
         seeker.SetActive(true);
         seekerCanvas.SetActive(true);
-        //seekerCanvas.GetComponent<Animator>().SetTrigger("FadeIn");
+        seekerCanvas.GetComponent<Animator>().SetTrigger("SeekerFadeIn");
         _cursorManager.SetSpecialCursor();
     }
 
-    public void GuessEnded()
+    public void GuessEnded(bool targetFound)
     {
-        _guessScript.transform.parent.gameObject.SetActive(false);
+        seekerCamera.GetComponent<Cam_Controler>().enabled = false;
+        seeker.GetComponent<PlayerInput>().enabled = false;
+        _guessScript.enabled = false;
+        _cursorManager.SetDefaultCursor();
+        
     }
 }

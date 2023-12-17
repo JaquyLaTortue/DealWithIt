@@ -29,6 +29,7 @@ public class PlaceObject : MonoBehaviour
     }
     private void Update()
     {
+        //Display a ghost object to show where the object will be placed if it is possible
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject==null)
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
@@ -36,13 +37,15 @@ public class PlaceObject : MonoBehaviour
             _ghost.transform.position = hit.point;
             _canPlace = true;
         }
-        else
+        else //If the object can't be placed, hide the ghost object
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.red);
             _ghost.SetActive(false);
             _canPlace = false;
         }
     }
+
+    //Place the object where the ghost object is
     public void OnPlace(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || !_canPlace) return;
@@ -52,6 +55,7 @@ public class PlaceObject : MonoBehaviour
         OnObjectPlaced?.Invoke();
     }
 
+    //Destroy the object place if the player wan't to change it
     public void CancelPlacement()
     {
         Destroy(_placedObject);
@@ -60,6 +64,7 @@ public class PlaceObject : MonoBehaviour
         OnObjectPlacementCancelled?.Invoke();
     }
 
+    //Validate the placement and end the phase
     public void ValidatePlacement()
     {
         OnPhaseEnded?.Invoke();
