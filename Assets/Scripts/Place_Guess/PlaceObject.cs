@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,10 +14,16 @@ public class PlaceObject : MonoBehaviour
     bool _canPlace = true;
 
     [SerializeField] CursorManager _cursorManager;
+    [SerializeField] PlayerInput _playerInput;
 
     GameObject _placedObject;
 
     RaycastHit hit;
+
+    //UI to show when the object is placed
+    [SerializeField] GameObject _objectPlacedUI;
+    [SerializeField] TMP_Text _validateText;
+    [SerializeField] TMP_Text _cancelText;
 
     //Events triggered when the phase is over
     public event Action OnPhaseEnded;
@@ -55,6 +62,9 @@ public class PlaceObject : MonoBehaviour
         if (!ctx.started || !_canPlace) return;
         _placedObject = Instantiate(_object, _ghost.transform.position, Quaternion.identity);
         _canPlace = false;
+        _objectPlacedUI.SetActive(true);
+        _validateText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["ValidatePlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to validate";
+        _cancelText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["CancelPlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to cancel" ;
     }
 
     //Destroy the object place if the player wan't to change it
@@ -63,6 +73,7 @@ public class PlaceObject : MonoBehaviour
         if (!ctx.started || _placedObject == null) return;
         Destroy(_placedObject);
         _placedObject = null;
+        _objectPlacedUI.SetActive(false);
     }
 
     //Validate the placement and end the phase
