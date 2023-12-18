@@ -20,13 +20,11 @@ public class PlaceObject : MonoBehaviour
 
     //Events triggered when the phase is over
     public event Action OnPhaseEnded;
-    public event Action OnObjectPlaced;
-    public event Action OnObjectPlacementCancelled;
 
     private void Update()
     {
         //Display a ghost object to show where the object will be placed if it is possible
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject==null)
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject == null)
         {
             if (_ghost == null)
             {
@@ -57,22 +55,20 @@ public class PlaceObject : MonoBehaviour
         if (!ctx.started || !_canPlace) return;
         _placedObject = Instantiate(_object, _ghost.transform.position, Quaternion.identity);
         _canPlace = false;
-        _cursorManager.SetDefaultCursor();
-        OnObjectPlaced?.Invoke();
     }
 
     //Destroy the object place if the player wan't to change it
-    public void CancelPlacement()
+    public void CancelPlacement(InputAction.CallbackContext ctx)
     {
+        if (!ctx.started || _placedObject == null) return;
         Destroy(_placedObject);
         _placedObject = null;
-        _cursorManager.SetSpecialCursor();
-        OnObjectPlacementCancelled?.Invoke();
     }
 
     //Validate the placement and end the phase
-    public void ValidatePlacement()
+    public void ValidatePlacement(InputAction.CallbackContext ctx)
     {
+        if (!ctx.started || _placedObject == null) return;
         OnPhaseEnded?.Invoke();
     }
 }

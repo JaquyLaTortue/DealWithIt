@@ -187,12 +187,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeObject: {fileID: 6386351791868510083}
-  smallObject: {fileID: 0}
-  mediumObject: {fileID: 0}
-  largeObject: {fileID: 0}
-  ghostSmallObject: {fileID: 0}
-  ghostMediumObject: {fileID: 0}
-  ghostLargeObject: {fileID: 0}
+  smallObject: {fileID: 2212205604264206507, guid: 2722473d5c689c847a6931745dc9ef3b, type: 3}
+  mediumObject: {fileID: 7002619389902271660, guid: 2addc04a5b1e34c4294222245dc00755, type: 3}
+  largeObject: {fileID: 7881718293193633095, guid: 2850415a591e856448bd7da24e9ef241, type: 3}
+  ghostSmallObject: {fileID: 3242803869654762308, guid: d3d258b1280dce6449b0a92de31bf1e2, type: 3}
+  ghostMediumObject: {fileID: 7312127221451390145, guid: db3a93c2ac23d814980ae1989453a6a5, type: 3}
+  ghostLargeObject: {fileID: 4942084750480277183, guid: d02f8ff179303cf45b6e5aa561fa2119, type: 3}
   smallButton: {fileID: 1103833822}
   mediumButton: {fileID: 1450323729}
   largeButton: {fileID: 403289554}
@@ -2070,6 +2070,82 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1695175724}
     m_Modifications:
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: 76ad1eea-c536-4ee3-a04f-aad9e9ca724f
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: af44f85a-77a9-4c1a-a331-79700bc04d43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: Hider/ValidatePlacement[/Keyboard/y]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: Hider/CancelPlacement[/Keyboard/n]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6386351791868510083}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6386351791868510083}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ValidatePlacement
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelPlacement
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2429909323506175280, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -2164,7 +2240,7 @@ PrefabInstance:
       objectReference: {fileID: 1019314284}
     - target: {fileID: 6386351791939689206, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: layerMask.m_Bits
-      value: 960
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 9015890197451318933, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: SneakSpeed

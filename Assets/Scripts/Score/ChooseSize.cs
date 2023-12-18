@@ -24,21 +24,21 @@ public class ChooseSize : MonoBehaviour
     public event Action<int> OnSizeChoosed;
     public void SmallChoose()
     {
-        //placeObject.SetObject(smallObject, ghostSmallObject);
+        placeObject.SetObject(smallObject, ghostSmallObject);
         OnSizeChoosed?.Invoke(1);
         UiSetUp();
     }
 
     public void MediumChoose()
     {
-        //placeObject.SetObject(mediumObject, ghostMediumObject);
+        placeObject.SetObject(mediumObject, ghostMediumObject);
         OnSizeChoosed?.Invoke(2);
         UiSetUp();
     }
 
     public void LargeChoose()
     {
-        //placeObject.SetObject(largeObject, ghostLargeObject);
+        placeObject.SetObject(largeObject, ghostLargeObject);
         OnSizeChoosed?.Invoke(3);
         UiSetUp();
     }

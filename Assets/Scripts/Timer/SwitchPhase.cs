@@ -46,9 +46,7 @@ public class SwitchPhase : MonoBehaviour
     public event Action<bool> OnGameEnded;
     void Start()
     {
-        _placeObjectScript.OnObjectPlaced += ObjectPlaced;
         _placeObjectScript.OnPhaseEnded += PlaceFadeOut;
-        _placeObjectScript.OnObjectPlacementCancelled += ObjectPlacementCancelled;
         _guessScript.OnPhaseEnded += GuessEnded;
 
         _generalCanvasAnimator = generalCanvas.GetComponent<Animator>();
@@ -81,18 +79,6 @@ public class SwitchPhase : MonoBehaviour
         _cursorManager.SetSpecialCursor();
     }
 
-    void ObjectPlaced()
-    {
-        objectPlacedUI.SetActive(true);
-        hiderCamera.GetComponent<Cam_Controler>().enabled = false;
-    }
-
-    void ObjectPlacementCancelled()
-    {
-        objectPlacedUI.SetActive(false);
-        hiderCamera.GetComponent<Cam_Controler>().enabled = true;
-    }
-
     void PlaceFadeOut()
     {
         objectPlacedUI.SetActive(false);
@@ -111,6 +97,7 @@ public class SwitchPhase : MonoBehaviour
         hider.SetActive(false);
         hiderCanvas.SetActive(false);
 
+        _cursorManager.SetDefaultCursor();
         generalCamera.SetActive(true);
         generalCanvas.SetActive(true);
         _generalCanvasAnimator.SetTrigger("FadeInBetweenPhase");
