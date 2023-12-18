@@ -409,7 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d45aa05fa7e844488a5447b33956dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: c8fc4cd6e8ca9164882436fe302fad1a, type: 3}
+  DefaultCursorTexture: {fileID: 0}
+  pointCursorTexture: {fileID: 0}
 --- !u!4 &1205211400
 Transform:
   m_ObjectHideFlags: 0
