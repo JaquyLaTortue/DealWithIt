@@ -9,6 +9,7 @@ public class SwitchPhase : MonoBehaviour
     [SerializeField] Guess _guessScript;
     [SerializeField] PlaceObject _placeObjectScript;
     [SerializeField] CursorManager _cursorManager;
+    [SerializeField] Score _score;
 
     [Header("Player References & Camera")]
     [SerializeField] GameObject hider;
@@ -132,6 +133,7 @@ public class SwitchPhase : MonoBehaviour
     }
     void GuessStart()
     {
+        _score.StartGuessing = true;
         generalCamera.SetActive(false);
         seeker.SetActive(true);
         seekerCanvas.SetActive(true);
@@ -141,6 +143,7 @@ public class SwitchPhase : MonoBehaviour
 
     public void GuessEnded(bool _targetFound)
     {
+        _score.CalculateScore();
         targetFound = _targetFound;
         seekerCamera.GetComponent<Cam_Controler>().enabled = false;
         seeker.GetComponent<PlayerInput>().enabled = false;

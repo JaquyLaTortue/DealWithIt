@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public class Timer : MonoBehaviour
+public class TimeLimit : MonoBehaviour
 {
     public float temps = 10;
     public TMP_Text timertext;

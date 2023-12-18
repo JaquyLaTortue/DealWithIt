@@ -23,15 +23,15 @@ public class PlaceObject : MonoBehaviour
     public event Action OnObjectPlaced;
     public event Action OnObjectPlacementCancelled;
 
-    private void Start()
-    {
-        _ghost = Instantiate(ghost, transform.position, Quaternion.identity);
-    }
     private void Update()
     {
         //Display a ghost object to show where the object will be placed if it is possible
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject==null)
         {
+            if (_ghost == null)
+            {
+                _ghost = Instantiate(ghost, hit.point, Quaternion.identity);
+            }
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
             _ghost.SetActive(true);
             _ghost.transform.position = hit.point;
@@ -40,9 +40,15 @@ public class PlaceObject : MonoBehaviour
         else //If the object can't be placed, hide the ghost object
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.red);
-            _ghost.SetActive(false);
+            if (_ghost != null) _ghost.SetActive(false);
             _canPlace = false;
         }
+    }
+
+    public void SetObject(GameObject objectToPlace, GameObject ghostObject)
+    {
+        _object = objectToPlace;
+        ghost = ghostObject;
     }
 
     //Place the object where the ghost object is
