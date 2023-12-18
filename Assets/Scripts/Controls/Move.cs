@@ -25,7 +25,8 @@ public class Move : MonoBehaviour
 
     [Header("References")]
     private Rigidbody rb;
- 
+    public GameObject PlayerCamera;
+
     //Stores the value of the move input
 
     private void Start()
@@ -74,8 +75,6 @@ public class Move : MonoBehaviour
         {
             rb.AddForce(_moveDirection.normalized * Speed * 1f * airMultiplier, ForceMode.Force);
         }
-        
-
     }
 
 }

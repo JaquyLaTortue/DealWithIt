@@ -38,6 +38,7 @@ public class PlaceObject : MonoBehaviour
                 _ghost = Instantiate(ghost, hit.point, Quaternion.identity);
             }
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
+            _ghost.transform.position = hit.normal;
             _ghost.SetActive(true);
             _ghost.transform.position = hit.point;
             _canPlace = true;
@@ -64,7 +65,7 @@ public class PlaceObject : MonoBehaviour
         _canPlace = false;
         _objectPlacedUI.SetActive(true);
         _validateText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["ValidatePlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to validate";
-        _cancelText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["CancelPlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to cancel" ;
+        _cancelText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["CancelPlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to cancel";
     }
 
     //Destroy the object place if the player wan't to change it

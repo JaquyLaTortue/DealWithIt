@@ -9,8 +9,9 @@ public class Cam_Controler : MonoBehaviour
 
     float xRotation;
     float yRotation;
+    Vector3 velocity = Vector3.zero;
 
-    private void Update()
+    private void LateUpdate()
     {
         xRotation -= Input.GetAxis("Mouse Y") * Sensitivity * Time.deltaTime;
         yRotation += Input.GetAxis("Mouse X") * Sensitivity * Time.deltaTime;
