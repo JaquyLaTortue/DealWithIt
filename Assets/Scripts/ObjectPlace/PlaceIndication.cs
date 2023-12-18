@@ -18,7 +18,7 @@ public class PlaceIndication : MonoBehaviour
     [SerializeField] TMP_Text SeekerFormeText;
 
     [Header("Indications")]
-    [SerializeField] List<string> Color = new() {"Green" , "Red", "Yellow", "Bue", "Purple", "Orange", "Cyan", "White", "Black", "Grey"};
+    [SerializeField] List<string> Color = new() {"Green" , "Red", "Yellow", "Blue", "Purple", "Orange", "Cyan", "White", "Black", "Grey"};
     [SerializeField] List<string> Adjectif = new() {"Stable", "Reachable", "Heavy", "Unreachable", "Tough", "Light", "Wood", "Paper", "Carpet", "Iron"};
     [SerializeField] List<string> Forme = new() {"Round", "Square", "Triangle", "Star", "Long", "Big", "Small", "Short", "Oval", "Medium"};
 

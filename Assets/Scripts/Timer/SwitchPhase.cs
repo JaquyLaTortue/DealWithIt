@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,10 +35,14 @@ public class SwitchPhase : MonoBehaviour
     [SerializeField] AnimationClip _fadeOutAnim;
     [SerializeField] AnimationClip _placeFadeOutAnim;
     [SerializeField] AnimationClip _fadeOutBetweenPhaseAnim;
+    [SerializeField] AnimationClip _seekerFadeOutAnim;
 
     Animator _generalCanvasAnimator;
     Animator _hiderCanvasAnimator;
 
+    bool targetFound = false;
+
+    public event Action<bool> OnGameEnded;
     void Start()
     {
         _placeObjectScript.OnObjectPlaced += ObjectPlaced;
@@ -134,12 +139,22 @@ public class SwitchPhase : MonoBehaviour
         _cursorManager.SetSpecialCursor();
     }
 
-    public void GuessEnded(bool targetFound)
+    public void GuessEnded(bool _targetFound)
     {
+        targetFound = _targetFound;
         seekerCamera.GetComponent<Cam_Controler>().enabled = false;
         seeker.GetComponent<PlayerInput>().enabled = false;
         _guessScript.enabled = false;
         _cursorManager.SetDefaultCursor();
-        
+        seekerCanvas.GetComponent<Animator>().SetTrigger("SeekerFadeOut");
+        StartCoroutine(WaitforSeekerFadeOut(_seekerFadeOutAnim.length));
     }
+
+    IEnumerator WaitforSeekerFadeOut(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        seekerCanvas.SetActive(false);
+        OnGameEnded?.Invoke(targetFound);
+    }
+
 }
