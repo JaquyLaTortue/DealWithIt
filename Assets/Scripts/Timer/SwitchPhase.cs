@@ -22,7 +22,6 @@ public class SwitchPhase : MonoBehaviour
 
     [Header("Hider Canvas References")]
     [SerializeField] GameObject hiderCanvas;
-    [SerializeField] GameObject objectPlacedUI;
 
     [Header("SeekerCanvas References")]
     [SerializeField] GameObject seekerCanvas;
@@ -81,7 +80,6 @@ public class SwitchPhase : MonoBehaviour
 
     void PlaceFadeOut()
     {
-        objectPlacedUI.SetActive(false);
         _hiderCanvasAnimator.SetTrigger("FadeOut");
         StartCoroutine(WaitForPlaceFadeOut(_placeFadeOutAnim.length));
     }
