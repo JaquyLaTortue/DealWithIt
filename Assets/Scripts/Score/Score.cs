@@ -1,4 +1,4 @@
-using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
@@ -11,8 +11,11 @@ public class Score : MonoBehaviour
     int objectScore;
     [SerializeField] int maxScore = 1000;
 
+
+    public TMP_Text hiderScoreText;
+    public TMP_Text seekerScoreText;
+
     float elapsedTime;
-    int objectSize;
 
     public bool StartGuessing = false;
     public bool finised = false;
@@ -37,7 +40,6 @@ public class Score : MonoBehaviour
 
     void SetObjectSize(int size)
     {
-        objectSize = size;
         switch (size)
         {
             case 1:
@@ -56,7 +58,7 @@ public class Score : MonoBehaviour
 
     public void CalculateScore()
     {
-        int scoreLost =(Mathf.RoundToInt(elapsedTime) * 2);
+        int scoreLost = (Mathf.RoundToInt(elapsedTime) * 2);
         seekerScore -= scoreLost;
         hiderScore += scoreLost;
 
@@ -69,7 +71,8 @@ public class Score : MonoBehaviour
         {
             hiderScore += objectScore;
         }
-
+        hiderScoreText.text = hiderScore.ToString();
+        seekerScoreText.text = seekerScore.ToString();
         Debug.Log($"HiderScore : {hiderScore} / SeekerScore : {seekerScore}");
     }
 
