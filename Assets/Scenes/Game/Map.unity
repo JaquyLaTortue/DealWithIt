@@ -11208,7 +11208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_ActionId
@@ -11219,6 +11219,10 @@ PrefabInstance:
       value: af44f85a-77a9-4c1a-a331-79700bc04d43
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 0510f800-2608-4713-85bb-2ef9de0dc787
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_ActionName
       value: Hider/ValidatePlacement[/Keyboard/y]
       objectReference: {fileID: 0}
@@ -11227,11 +11231,19 @@ PrefabInstance:
       value: Hider/CancelPlacement[/Keyboard/n]
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: Hider/ChangePlaceMode[/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
@@ -11243,11 +11255,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6386351791868510083}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6386351791868510083}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6386351791868510083}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
@@ -11259,12 +11279,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ValidatePlacement
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CancelPlacement
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangePlaceMode
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -11275,11 +11303,19 @@ PrefabInstance:
       value: PlaceObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354189999220832104, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2429909323506175280, guid: 691d0cb8149c31c418085f816a555e54, type: 3}

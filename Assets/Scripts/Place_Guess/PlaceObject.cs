@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +29,8 @@ public class PlaceObject : MonoBehaviour
     //Events triggered when the phase is over
     public event Action OnPhaseEnded;
 
+    [SerializeField] bool PlaceMode;
+
     private void Update()
     {
         //Display a ghost object to show where the object will be placed if it is possible
@@ -42,33 +43,37 @@ public class PlaceObject : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
             _ghost.SetActive(true);
 
-            //_ghost.transform.position = hit.point;
-            //_ghost.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-
-            ////Temporary solution for offset
-            if (hit.normal.y > .5f)
+            if (PlaceMode) //Turn the ghost object to the normal of the surface
             {
                 _ghost.transform.position = hit.point;
+                _ghost.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
             }
-            else if (hit.normal.x > .5f)
+            else //Set an offset to the object to place it on the wall
             {
-                _ghost.transform.position = new Vector3(hit.point.x + objectOffSet.x, hit.point.y, hit.point.z);
-            }
-            else if (hit.normal.z > .5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + objectOffSet.z);
-            }
-            else if (hit.normal.y < -.5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y + objectOffSet.y, hit.point.z);
-            }
-            else if (hit.normal.x < -.5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x - objectOffSet.x, hit.point.y, hit.point.z);
-            }
-            else if (hit.normal.z < -.5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z - objectOffSet.z);
+                if (hit.normal.y > .5f)
+                {
+                    _ghost.transform.position = hit.point;
+                }
+                else if (hit.normal.x > .5f)
+                {
+                    _ghost.transform.position = new Vector3(hit.point.x + objectOffSet.x, hit.point.y, hit.point.z);
+                }
+                else if (hit.normal.z > .5f)
+                {
+                    _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + objectOffSet.z);
+                }
+                else if (hit.normal.y < -.5f)
+                {
+                    _ghost.transform.position = new Vector3(hit.point.x, hit.point.y + objectOffSet.y, hit.point.z);
+                }
+                else if (hit.normal.x < -.5f)
+                {
+                    _ghost.transform.position = new Vector3(hit.point.x - objectOffSet.x, hit.point.y, hit.point.z);
+                }
+                else if (hit.normal.z < -.5f)
+                {
+                    _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z - objectOffSet.z);
+                }
             }
             _canPlace = true;
         }
@@ -116,5 +121,11 @@ public class PlaceObject : MonoBehaviour
     {
         if (!ctx.started || _placedObject == null) return;
         OnPhaseEnded?.Invoke();
+    }
+
+    public void ChangePlaceMode(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.started) return;
+        PlaceMode = !PlaceMode;
     }
 }
