@@ -42,30 +42,35 @@ public class PlaceObject : MonoBehaviour
             }
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
             _ghost.SetActive(true);
-            if (hit.normal.y > .5f)
-            {
-                _ghost.transform.position = hit.point;
-            }
-            else if (hit.normal.x > .5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x + objectOffSet.x, hit.point.y, hit.point.z);
-            }
-            else if (hit.normal.z > .5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + objectOffSet.z);
-            }
-            else if (hit.normal.y < -.5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y + objectOffSet.y, hit.point.z);
-            }
-            else if (hit.normal.x < -.5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x - objectOffSet.x, hit.point.y, hit.point.z);
-            }
-            else if (hit.normal.z < -.5f)
-            {
-                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z - objectOffSet.z);
-            }
+
+            _ghost.transform.position = hit.point;
+            _ghost.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+
+            //////Temporary solution for offset
+            //if (hit.normal.y > .5f)
+            //{
+                //_ghost.transform.position = hit.point;
+            //}
+            //else if (hit.normal.x > .5f)
+            //{
+            //    _ghost.transform.position = new Vector3(hit.point.x + objectOffSet.x, hit.point.y, hit.point.z);
+            //}
+            //else if (hit.normal.z > .5f)
+            //{
+            //    _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + objectOffSet.z);
+            //}
+            //else if (hit.normal.y < -.5f)
+            //{
+            //    _ghost.transform.position = new Vector3(hit.point.x, hit.point.y + objectOffSet.y, hit.point.z);
+            //}
+            //else if (hit.normal.x < -.5f)
+            //{
+            //    _ghost.transform.position = new Vector3(hit.point.x - objectOffSet.x, hit.point.y, hit.point.z);
+            //}
+            //else if (hit.normal.z < -.5f)
+            //{
+            //    _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z - objectOffSet.z);
+            //}
             _canPlace = true;
         }
         else //If the object can't be placed, hide the ghost object
@@ -91,7 +96,7 @@ public class PlaceObject : MonoBehaviour
     public void OnPlace(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || !_canPlace) return;
-        _placedObject = Instantiate(_object, _ghost.transform.position, Quaternion.identity);
+        _placedObject = Instantiate(_object, _ghost.transform.position, _ghost.transform.rotation);
         _canPlace = false;
         _objectPlacedUI.SetActive(true);
         _validateText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["ValidatePlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to validate";

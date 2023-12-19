@@ -717,8 +717,8 @@ MonoBehaviour:
   ghostMediumObject: {fileID: 5732028713305530625, guid: b65532ecbb6a53747b0893ae8068f54f, type: 3}
   ghostLargeObject: {fileID: 4942084750480277183, guid: d02f8ff179303cf45b6e5aa561fa2119, type: 3}
   smallOffset: {x: 0.058, y: -0.33333334, z: 0.055}
-  mediumOffset: {x: 0.22, y: -0.17, z: 0.16}
-  largeOffset: {x: 0.3, y: -0.33333334, z: 0.45}
+  mediumOffset: {x: 0.16, y: -0.11, z: 0.1}
+  largeOffset: {x: 0, y: 0, z: 0}
   smallButton: {fileID: 1103833822}
   mediumButton: {fileID: 1450323729}
   largeButton: {fileID: 403289554}
