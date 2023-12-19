@@ -12,9 +12,11 @@ public class Score : MonoBehaviour
     int objectScore;
     [SerializeField] int maxScore = 1000;
 
+    public GameObject endCanvas;
 
     public TMP_Text hiderScoreText;
     public TMP_Text seekerScoreText;
+    public TMP_Text FinalText;
 
     float elapsedTime;
 
@@ -61,6 +63,7 @@ public class Score : MonoBehaviour
 
     public void CalculateScore(bool TargetFound)
     {
+        endCanvas.SetActive(true);
         if (TargetFound)
         {
             int GuessesThrown = _switchPhase._guessScript.maxGuess - _switchPhase._guessScript.remainingGuess;
@@ -91,6 +94,15 @@ public class Score : MonoBehaviour
 
             seekerScore = 0;
             seekerScoreText.text = seekerScore.ToString();
+        }
+
+        if (hiderScore > seekerScore)
+        {
+            FinalText.text = "Hider Win, nice hiding place";
+        }
+        else
+        {
+            FinalText.text = "Seeker Win, what sense of observation";
         }
     }
 }

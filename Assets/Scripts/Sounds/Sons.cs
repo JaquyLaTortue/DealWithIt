@@ -4,23 +4,17 @@ using UnityEngine;
 public class Sons : MonoBehaviour
 {
     AudioSource myAudio;
+    [SerializeField] int timeToWait = 20;
 
-    // Start is called before the first frame update
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
         StartCoroutine(bang());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator bang()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(timeToWait);
         myAudio.Play();
         StartCoroutine(bang());
     }
