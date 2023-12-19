@@ -1,8 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-
-
 public class TimeLimit : MonoBehaviour
 {
     public float temps = 10;

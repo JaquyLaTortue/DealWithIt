@@ -4,6 +4,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     [SerializeField] ChooseSize chooseSize;
+    [SerializeField] SwitchPhase _switchPhase;
 
     int hiderScore;
     int seekerScore;
@@ -22,6 +23,8 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
+        _switchPhase.OnGameEnded += CalculateScore;
+
         seekerScore = maxScore;
         hiderScore = 0;
 
@@ -56,24 +59,38 @@ public class Score : MonoBehaviour
         }
     }
 
-    public void CalculateScore()
+    public void CalculateScore(bool TargetFound)
     {
-        int scoreLost = (Mathf.RoundToInt(elapsedTime) * 2);
-        seekerScore -= scoreLost;
-        hiderScore += scoreLost;
-
-        finised = false;
-        if (elapsedTime < 120)
+        if (TargetFound)
         {
-            seekerScore += objectScore;
+            int GuessesThrown = _switchPhase._guessScript.maxGuess - _switchPhase._guessScript.remainingGuess;
+            int GuessThrownScore = GuessesThrown * 150;
+            Debug.Log($"GuessesThrown : {GuessesThrown} / GuessThrownScore : {GuessThrownScore}");
+            int scoreLost = (Mathf.RoundToInt(elapsedTime) * 2);
+            seekerScore = seekerScore - (scoreLost + GuessThrownScore);
+            hiderScore += scoreLost + GuessThrownScore;
+
+            finised = false;
+            if (elapsedTime < 120)
+            {
+                seekerScore += objectScore;
+                if (seekerScore < 0) seekerScore = 0;
+            }
+            else
+            {
+                hiderScore += objectScore;
+            }
+            hiderScoreText.text = hiderScore.ToString();
+            seekerScoreText.text = seekerScore.ToString();
+            Debug.Log($"HiderScore : {hiderScore} / SeekerScore : {seekerScore}");
         }
         else
         {
-            hiderScore += objectScore;
-        }
-        hiderScoreText.text = hiderScore.ToString();
-        seekerScoreText.text = seekerScore.ToString();
-        Debug.Log($"HiderScore : {hiderScore} / SeekerScore : {seekerScore}");
-    }
+            hiderScore = maxScore;
+            hiderScoreText.text = hiderScore.ToString();
 
+            seekerScore = 0;
+            seekerScoreText.text = seekerScore.ToString();
+        }
+    }
 }
