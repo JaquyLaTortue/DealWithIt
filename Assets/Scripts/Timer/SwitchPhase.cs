@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class SwitchPhase : MonoBehaviour
 {
     [Header("Scripts References")]
-    [SerializeField] Guess _guessScript;
+    public Guess _guessScript;
     [SerializeField] PlaceObject _placeObjectScript;
     [SerializeField] CursorManager _cursorManager;
     [SerializeField] Score _score;
@@ -50,6 +50,12 @@ public class SwitchPhase : MonoBehaviour
 
         _generalCanvasAnimator = generalCanvas.GetComponent<Animator>();
         _hiderCanvasAnimator = hiderCanvas.GetComponent<Animator>();
+
+        Transform hiderSpawn = hider.GetComponent<Move>()._randomSpawn.SetRandomSpawn();
+        hider.transform.SetPositionAndRotation(hiderSpawn.position, hiderSpawn.rotation);
+
+        Transform seekerSpawn = seeker.GetComponent<Move>()._randomSpawn.SetRandomSpawn();
+        seeker.transform.SetPositionAndRotation(seekerSpawn.position, seekerSpawn.rotation);
     }
 
     //Do a Fadeout on the general canvas and start the place phase
@@ -128,7 +134,7 @@ public class SwitchPhase : MonoBehaviour
 
     public void GuessEnded(bool _targetFound)
     {
-        _score.CalculateScore();
+        //_score.CalculateScore(_targetFound);
         targetFound = _targetFound;
         seekerCamera.GetComponent<Cam_Controler>().enabled = false;
         seeker.GetComponent<PlayerInput>().enabled = false;

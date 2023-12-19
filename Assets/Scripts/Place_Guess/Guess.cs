@@ -9,7 +9,7 @@ public class Guess : MonoBehaviour
     [SerializeField] LayerMask Props;
     [SerializeField] LayerMask Target;
 
-    [SerializeField] int maxGuess;
+    public int maxGuess;
     public int remainingGuess { get; private set; }
 
     [SerializeField] int range;

@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,8 +25,15 @@ public class Move : MonoBehaviour
     [Header("References")]
     private Rigidbody rb;
     public GameObject PlayerCamera;
+    public RandomSpawn _randomSpawn;
 
     //Stores the value of the move input
+
+    void ObjectSpawn()
+    {
+        Transform _choosedSpawn = _randomSpawn.SetRandomSpawn();
+        transform.SetPositionAndRotation(_choosedSpawn.position, _choosedSpawn.rotation);
+    }
 
     private void Start()
     {

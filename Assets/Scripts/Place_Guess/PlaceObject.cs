@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class PlaceObject : MonoBehaviour
     [SerializeField] GameObject _object;
     [SerializeField] GameObject ghost;
     GameObject _ghost;
+    Vector3 objectOffSet = new();
     public LayerMask layerMask;
     [SerializeField] int range = 15;
     bool _canPlace = true;
@@ -33,14 +35,37 @@ public class PlaceObject : MonoBehaviour
         //Display a ghost object to show where the object will be placed if it is possible
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject == null)
         {
+            Debug.Log(hit.normal.ToString());
             if (_ghost == null)
             {
                 _ghost = Instantiate(ghost, hit.point, Quaternion.identity);
             }
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
-            _ghost.transform.position = hit.normal;
             _ghost.SetActive(true);
-            _ghost.transform.position = hit.point;
+            if (hit.normal.y > .5f)
+            {
+                _ghost.transform.position = hit.point;
+            }
+            else if (hit.normal.x > .5f)
+            {
+                _ghost.transform.position = new Vector3(hit.point.x + objectOffSet.x, hit.point.y, hit.point.z);
+            }
+            else if (hit.normal.z > .5f)
+            {
+                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + objectOffSet.z);
+            }
+            else if (hit.normal.y < -.5f)
+            {
+                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y + objectOffSet.y, hit.point.z);
+            }
+            else if (hit.normal.x < -.5f)
+            {
+                _ghost.transform.position = new Vector3(hit.point.x - objectOffSet.x, hit.point.y, hit.point.z);
+            }
+            else if (hit.normal.z < -.5f)
+            {
+                _ghost.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z - objectOffSet.z);
+            }
             _canPlace = true;
         }
         else //If the object can't be placed, hide the ghost object
@@ -55,6 +80,11 @@ public class PlaceObject : MonoBehaviour
     {
         _object = objectToPlace;
         ghost = ghostObject;
+    }
+
+    public void SetOffset(Vector3 offset)
+    {
+        objectOffSet = offset;
     }
 
     //Place the object where the ghost object is
