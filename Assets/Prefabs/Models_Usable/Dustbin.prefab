@@ -48,9 +48,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7907015752099951044, guid: 2558ce57f8a03774692bc935de15897b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2558ce57f8a03774692bc935de15897b, type: 3}
       propertyPath: m_Name
       value: Dustbin
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2558ce57f8a03774692bc935de15897b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990862029313244722, guid: 2558ce57f8a03774692bc935de15897b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

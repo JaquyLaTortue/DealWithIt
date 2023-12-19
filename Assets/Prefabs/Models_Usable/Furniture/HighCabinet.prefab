@@ -48,9 +48,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5794771080858474324, guid: c3e5c3337c74e1743a90187b252ded93, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4339599057744040710, guid: c3e5c3337c74e1743a90187b252ded93, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c3e5c3337c74e1743a90187b252ded93, type: 3}
       propertyPath: m_Name
       value: HighCabinet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c3e5c3337c74e1743a90187b252ded93, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
