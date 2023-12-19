@@ -86,7 +86,7 @@ public class Score : MonoBehaviour
         }
         else
         {
-            hiderScore = maxScore;
+            hiderScore = maxScore + objectScore;
             hiderScoreText.text = hiderScore.ToString();
 
             seekerScore = 0;
