@@ -711,10 +711,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeObject: {fileID: 6386351791868510083}
   smallObject: {fileID: 2212205604264206507, guid: 2722473d5c689c847a6931745dc9ef3b, type: 3}
-  mediumObject: {fileID: 7002619389902271660, guid: 2addc04a5b1e34c4294222245dc00755, type: 3}
+  mediumObject: {fileID: 5383307300480097908, guid: 3771b0c26deadd64b886d721f08d487b, type: 3}
   largeObject: {fileID: 7881718293193633095, guid: 2850415a591e856448bd7da24e9ef241, type: 3}
   ghostSmallObject: {fileID: 3242803869654762308, guid: d3d258b1280dce6449b0a92de31bf1e2, type: 3}
-  ghostMediumObject: {fileID: 7312127221451390145, guid: db3a93c2ac23d814980ae1989453a6a5, type: 3}
+  ghostMediumObject: {fileID: 5732028713305530625, guid: b65532ecbb6a53747b0893ae8068f54f, type: 3}
   ghostLargeObject: {fileID: 4942084750480277183, guid: d02f8ff179303cf45b6e5aa561fa2119, type: 3}
   smallOffset: {x: 0.058, y: -0.33333334, z: 0.055}
   mediumOffset: {x: 0.22, y: -0.17, z: 0.16}
