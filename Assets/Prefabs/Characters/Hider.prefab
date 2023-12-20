@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2429909323506175280
 Transform:
   m_ObjectHideFlags: 0
@@ -35,7 +35,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3523257505715793803}
   m_Father: {fileID: 0}
@@ -152,13 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1151a594f15afb643a166b9fbda6c818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSpeed: 10
+  InitialSpeed: 5
   groundDrag: 5
   airMultiplier: 0
   playerHeight: 1
   whatisGround:
     serializedVersion: 2
     m_Bits: 64
+  PlayerCamera: {fileID: 5073805617964706810}
+  _randomSpawn: {fileID: 0}
 --- !u!114 &2775807604473444235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476cf129d01d0ba479a23b225f8e308c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 7
+  jumpForce: 5
   _canJump: 1
 --- !u!114 &9015890197451318933
 MonoBehaviour:
@@ -186,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SneakHeight: 0.25
-  SneakSpeed: 5
+  SneakSpeed: 3
   MoveScript: {fileID: 3069180926652658506}
 --- !u!114 &2354189999220832104
 MonoBehaviour:
@@ -334,13 +336,93 @@ MonoBehaviour:
     m_ActionId: 24f51a94-a5a9-43f9-9122-5a3995759995
     m_ActionName: Seeker/Sneak[/Keyboard/leftCtrl]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6386351791939689206}
+        m_TargetAssemblyTypeName: PlaceObject, Assembly-CSharp
+        m_MethodName: ValidatePlacement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 76ad1eea-c536-4ee3-a04f-aad9e9ca724f
     m_ActionName: Hider/ValidatePlacement[/Keyboard/y]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6386351791939689206}
+        m_TargetAssemblyTypeName: PlaceObject, Assembly-CSharp
+        m_MethodName: CancelPlacement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: af44f85a-77a9-4c1a-a331-79700bc04d43
     m_ActionName: Hider/CancelPlacement[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6386351791939689206}
+        m_TargetAssemblyTypeName: PlaceObject, Assembly-CSharp
+        m_MethodName: ChangePlaceMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0510f800-2608-4713-85bb-2ef9de0dc787
+    m_ActionName: Hider/ChangePlaceMode[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Interact, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8aacc714-5fbe-48da-a581-3b4c851e0d22
+    m_ActionName: Hider/InteractOpen[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Interact, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c31d9846-a286-431b-b1a3-2654bc0f18d9
+    m_ActionName: Hider/InteractClose[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: efa6b021-db0e-4ae5-90ec-b2b1d0a66698
+    m_ActionName: Seeker/InteractClose[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 117c9125-eab3-4b74-8ea4-a24de459320e
+    m_ActionName: Seeker/InteractOpen[/Keyboard/o]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hider
@@ -359,6 +441,7 @@ GameObject:
   - component: {fileID: 6386351791939689206}
   - component: {fileID: 620095088861101672}
   - component: {fileID: 8498312527782666069}
+  - component: {fileID: 4323629974839893535}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -378,8 +461,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.75, z: 0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 414254710912376211}
+  m_Children: []
   m_Father: {fileID: 2429909323506175280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6354642340193004621
@@ -450,9 +532,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
-  range: 15
+  range: 2
   _cursorManager: {fileID: 0}
-  _playerInput: {fileID: 0}
+  _playerInput: {fileID: 2354189999220832104}
   _objectPlacedUI: {fileID: 0}
   _validateText: {fileID: 0}
   _cancelText: {fileID: 0}
@@ -478,47 +560,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5073805617964706810}
   m_Enabled: 1
---- !u!1 &8757013652351470211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 414254710912376211}
-  - component: {fileID: 4214534005398777415}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &414254710912376211
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8757013652351470211}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.75, z: -0.64}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3523257505715793803}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4214534005398777415
+--- !u!114 &4323629974839893535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8757013652351470211}
+  m_GameObject: {fileID: 5073805617964706810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Script: {fileID: 11500000, guid: c4edf22cc5174f24fa1f305b43baa23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 5
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2048

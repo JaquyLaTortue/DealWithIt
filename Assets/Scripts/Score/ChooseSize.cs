@@ -21,10 +21,7 @@ public class ChooseSize : MonoBehaviour
     [SerializeField] Vector3 largeOffset;
 
     [Header("Buttons")]
-    [SerializeField] GameObject smallButton;
-    [SerializeField] GameObject mediumButton;
-    [SerializeField] GameObject largeButton;
-    [SerializeField] GameObject readyButton;
+    [SerializeField] GameObject readyUI;
 
     public event Action<int> OnSizeChoosed;
     public void SmallChoose()
@@ -32,7 +29,6 @@ public class ChooseSize : MonoBehaviour
         placeObject.SetObject(smallObject, ghostSmallObject);
         placeObject.SetOffset(smallOffset);
         OnSizeChoosed?.Invoke(1);
-        UiSetUp();
     }
 
     public void MediumChoose()
@@ -40,7 +36,6 @@ public class ChooseSize : MonoBehaviour
         placeObject.SetObject(mediumObject, ghostMediumObject);
         placeObject.SetOffset(mediumOffset);
         OnSizeChoosed?.Invoke(2);
-        UiSetUp();
     }
 
     public void LargeChoose()
@@ -48,14 +43,5 @@ public class ChooseSize : MonoBehaviour
         placeObject.SetObject(largeObject, ghostLargeObject);
         placeObject.SetOffset(largeOffset);
         OnSizeChoosed?.Invoke(3);
-        UiSetUp();
-    }
-
-    void UiSetUp()
-    {
-        smallButton.SetActive(false);
-        mediumButton.SetActive(false);
-        largeButton.SetActive(false);
-        readyButton.SetActive(true);
     }
 }

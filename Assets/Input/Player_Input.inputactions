@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "InteractOpen",
+                    "type": "Button",
+                    "id": "8aacc714-5fbe-48da-a581-3b4c851e0d22",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractClose",
+                    "type": "Button",
+                    "id": "c31d9846-a286-431b-b1a3-2654bc0f18d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -245,6 +263,28 @@
                     "action": "ChangePlaceMode",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "107ac49d-327b-45b3-93b9-72cc65a882fe",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ee41d31-165f-4b12-8d45-20987a11d7be",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -283,6 +323,24 @@
                     "name": "Guess",
                     "type": "Button",
                     "id": "324ff1d6-ef38-476d-b7e0-b4302766ca70",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractOpen",
+                    "type": "Button",
+                    "id": "117c9125-eab3-4b74-8ea4-a24de459320e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractClose",
+                    "type": "Button",
+                    "id": "efa6b021-db0e-4ae5-90ec-b2b1d0a66698",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -452,6 +510,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Guess",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44d079f6-03e7-46d2-9390-b7a9835b6f0d",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5443a08e-c854-4a1e-95d9-e3b652574ea8",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractClose",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

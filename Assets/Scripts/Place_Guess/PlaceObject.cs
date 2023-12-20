@@ -35,6 +35,10 @@ public class PlaceObject : MonoBehaviour
     [SerializeField] TMP_Text _validateText;
     [SerializeField] TMP_Text _cancelText;
 
+
+    //Store the gameobject parent of the object placed
+    GameObject _placedObjectParent;
+
     //Events triggered when the phase is over
     public event Action OnPhaseEnded;
 
@@ -50,11 +54,11 @@ public class PlaceObject : MonoBehaviour
         //Display a ghost object to show where the object will be placed if it is possible
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject == null)
         {
+            _placedObjectParent = hit.collider.gameObject;
             if (_ghost == null)
             {
                 _ghost = Instantiate(ghost, hit.point, Quaternion.identity);
             }
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.blue);
             _ghost.SetActive(true);
 
             if (PlaceMode) //Turn the ghost object to the normal of the surface
@@ -94,7 +98,7 @@ public class PlaceObject : MonoBehaviour
         }
         else //If the object can't be placed, hide the ghost object
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.red);
+            _placedObjectParent = null;
             if (_ghost != null) _ghost.SetActive(false);
             _canPlace = false;
         }
@@ -121,6 +125,7 @@ public class PlaceObject : MonoBehaviour
     {
         if (!ctx.started || !_canPlace) return;
         _placedObject = Instantiate(_object, _ghost.transform.position, _ghost.transform.rotation);
+        _placedObject.transform.parent = _placedObjectParent.transform;
         _canPlace = false;
         _objectPlacedUI.SetActive(true);
         _validateText.text = $"Press ({InputControlPath.ToHumanReadableString(_playerInput.actions["ValidatePlacement"].bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}) to validate";

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 566539779291124678}
   - component: {fileID: 7769313942734054379}
   - component: {fileID: 7502242210285795308}
+  - component: {fileID: 3306827648791616846}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -32,8 +33,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.75, z: 0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 96780420640511073}
+  m_Children: []
   m_Father: {fileID: 5129914622356413154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7570182432309449795
@@ -115,12 +115,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Props:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 256
   Target:
     serializedVersion: 2
     m_Bits: 128
   maxGuess: 5
-  range: 5
+  range: 3
   guessResult: {fileID: 0}
 --- !u!81 &7502242210285795308
 AudioListener:
@@ -130,50 +130,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812657660377708819}
   m_Enabled: 1
---- !u!1 &4173751272090679688
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 96780420640511073}
-  - component: {fileID: 8785455907521221589}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &96780420640511073
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4173751272090679688}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.75, z: -0.64}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3075097633726231017}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8785455907521221589
+--- !u!114 &3306827648791616846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4173751272090679688}
+  m_GameObject: {fileID: 812657660377708819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Script: {fileID: 11500000, guid: c4edf22cc5174f24fa1f305b43baa23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 5
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &8709939973482529981
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5129914622356413154
 Transform:
   m_ObjectHideFlags: 0
@@ -326,13 +298,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1151a594f15afb643a166b9fbda6c818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSpeed: 10
+  InitialSpeed: 5
   groundDrag: 5
   airMultiplier: 0
   playerHeight: 1
   whatisGround:
     serializedVersion: 2
     m_Bits: 64
+  PlayerCamera: {fileID: 812657660377708819}
+  _randomSpawn: {fileID: 0}
 --- !u!114 &3866701075580122520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476cf129d01d0ba479a23b225f8e308c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 3.5
+  jumpForce: 5
   _canJump: 1
 --- !u!114 &4037945890412307363
 MonoBehaviour:
@@ -360,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SneakHeight: 0.25
-  SneakSpeed: 5
+  SneakSpeed: 3
   MoveScript: {fileID: 7073383692848867671}
 --- !u!114 &1275425727026609408
 MonoBehaviour:
@@ -515,6 +489,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: af44f85a-77a9-4c1a-a331-79700bc04d43
     m_ActionName: Hider/CancelPlacement[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0510f800-2608-4713-85bb-2ef9de0dc787
+    m_ActionName: Hider/ChangePlaceMode[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8aacc714-5fbe-48da-a581-3b4c851e0d22
+    m_ActionName: Hider/InteractOpen[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c31d9846-a286-431b-b1a3-2654bc0f18d9
+    m_ActionName: Hider/InteractClose[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 117c9125-eab3-4b74-8ea4-a24de459320e
+    m_ActionName: Seeker/InteractOpen[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: efa6b021-db0e-4ae5-90ec-b2b1d0a66698
+    m_ActionName: Seeker/InteractClose[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Seeker
