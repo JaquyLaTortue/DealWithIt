@@ -3,44 +3,31 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+    [Header("Scripts References")]
     [SerializeField] ChooseSize chooseSize;
     [SerializeField] SwitchPhase _switchPhase;
+    [SerializeField] TimeLimit _timer;
 
-    int hiderScore;
-    int seekerScore;
-
-    int objectScore;
+    [Header("Score")]
     [SerializeField] int maxScore = 1000;
+    int hiderScore;
+    int seekerScore = 0;
+    int objectScore = 0;
 
+    [Header("UI References")]
     public GameObject endCanvas;
-
     public TMP_Text hiderScoreText;
     public TMP_Text seekerScoreText;
     public TMP_Text FinalText;
 
-    float elapsedTime;
-
+    [Header("Bools")]
     public bool StartGuessing = false;
-    public bool finised = false;
 
     private void Start()
     {
         _switchPhase.OnGameEnded += CalculateScore;
 
-        seekerScore = maxScore;
-        hiderScore = 0;
-
-        elapsedTime = 0;
-
         chooseSize.OnSizeChoosed += SetObjectSize;
-    }
-
-    private void FixedUpdate()
-    {
-        if (StartGuessing && !finised)
-        {
-            elapsedTime += Time.deltaTime;
-        }
     }
 
     void SetObjectSize(int size)
@@ -66,15 +53,14 @@ public class Score : MonoBehaviour
         endCanvas.SetActive(true);
         if (TargetFound)
         {
-            int GuessesThrown = _switchPhase._guessScript.maxGuess - _switchPhase._guessScript.remainingGuess;
+            int GuessesThrown = _switchPhase._guessScript.maxGuess - _switchPhase._guessScript.remainingGuess - 1;
             int GuessThrownScore = GuessesThrown * 150;
-            Debug.Log($"GuessesThrown : {GuessesThrown} / GuessThrownScore : {GuessThrownScore}");
-            int scoreLost = (Mathf.RoundToInt(elapsedTime) * 2);
-            seekerScore = seekerScore - (scoreLost + GuessThrownScore);
-            hiderScore += scoreLost + GuessThrownScore;
+            int scoreLost = 2 * (_timer.initialTime - Mathf.RoundToInt(_timer.time));
+            if (scoreLost > maxScore) { scoreLost = maxScore; }
+            seekerScore = maxScore - scoreLost + GuessThrownScore;
+            hiderScore = scoreLost + GuessThrownScore;
 
-            finised = false;
-            if (elapsedTime < 120)
+            if (_timer.time > _timer.initialTime / 2)
             {
                 seekerScore += objectScore;
                 if (seekerScore < 0) seekerScore = 0;
