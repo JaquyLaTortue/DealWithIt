@@ -85,6 +85,7 @@ public class SwitchPhase : MonoBehaviour
     {
         hider.SetActive(true);
         hiderCanvas.SetActive(true);
+        _placeObjectScript.StartTimer();
         _hiderCanvasAnimator.SetTrigger("FadeIn");
         _cursorManager.SetSpecialCursor();
     }
