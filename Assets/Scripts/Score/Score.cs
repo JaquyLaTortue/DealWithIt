@@ -7,17 +7,21 @@ public class Score : MonoBehaviour
     [SerializeField] ChooseSize chooseSize;
     [SerializeField] SwitchPhase _switchPhase;
     [SerializeField] TimeLimit _timer;
+    [SerializeField] PlaceObject _placeObject;
+    [SerializeField] Guess _guess;
 
     [Header("Score")]
     [SerializeField] int maxScore = 1000;
-    int hiderScore;
+    int hiderScore = 0;
     int seekerScore = 0;
     int objectScore = 0;
+    int totalScore = 0;
 
     [Header("UI References")]
     public GameObject endCanvas;
     public TMP_Text hiderScoreText;
     public TMP_Text seekerScoreText;
+    public TMP_Text TotalScore;
     public TMP_Text FinalText;
 
     [Header("Bools")]
@@ -35,13 +39,13 @@ public class Score : MonoBehaviour
         switch (size)
         {
             case 1:
-                objectScore += 200;
+                objectScore += 1000;
                 break;
             case 2:
                 objectScore += 600;
                 break;
             case 3:
-                objectScore += 1000;
+                objectScore += 200;
                 break;
             default:
                 break;
@@ -50,45 +54,69 @@ public class Score : MonoBehaviour
 
     public void CalculateScore(bool TargetFound)
     {
-        endCanvas.SetActive(true);
         if (TargetFound)
         {
+            //Sets the hider's score depending on the time it took to place the object
+            switch (Mathf.RoundToInt(_placeObject.time))
+            {
+                case <= 30:
+                    hiderScore += 200;
+                    break;
+                case > 30 and <= 60:
+                    hiderScore += 150;
+                    break;
+                case > 60 and <= 90:
+                    hiderScore += 100;
+                    break;
+                case > 90 and <= 120:
+                    hiderScore += 50;
+                    break;
+                default:
+                    break;
+            }
+
+            //Sets the seeker's score depending on the time it took to find the object
             int GuessesThrown = _switchPhase._guessScript.maxGuess - _switchPhase._guessScript.remainingGuess - 1;
             int GuessThrownScore = GuessesThrown * 150;
             int scoreLost = 2 * (_timer.initialTime - Mathf.RoundToInt(_timer.time));
-            if (scoreLost > maxScore) { scoreLost = maxScore; }
-            seekerScore = maxScore - scoreLost + GuessThrownScore;
-            hiderScore = scoreLost + GuessThrownScore;
-
-            if (_timer.time > _timer.initialTime / 2)
+            //cap the lost score to the max score so the seeker can't have a negative score
+            if (scoreLost > maxScore)
             {
-                seekerScore += objectScore;
-                if (seekerScore < 0) seekerScore = 0;
+                scoreLost = maxScore;
             }
-            else
+            seekerScore = maxScore - scoreLost + GuessThrownScore;
+
+            //Add the object score if it is find before the half of the time
+            if (_timer.time > _timer.initialTime / 2)
             {
                 hiderScore += objectScore;
             }
-            hiderScoreText.text = hiderScore.ToString();
-            seekerScoreText.text = seekerScore.ToString();
-            Debug.Log($"HiderScore : {hiderScore} / SeekerScore : {seekerScore}");
+
+            //Sets the total score
+            totalScore = hiderScore + seekerScore;
         }
         else
         {
-            hiderScore = maxScore + objectScore;
-            hiderScoreText.text = hiderScore.ToString();
-
+            totalScore = 0;
+            hiderScore = 0;
             seekerScore = 0;
-            seekerScoreText.text = seekerScore.ToString();
         }
+        displayEnd(TargetFound);
+    }
+    void displayEnd(bool targetfound)
+    {
+        endCanvas.SetActive(true);
 
-        if (hiderScore > seekerScore)
+        hiderScoreText.text = $"Hider Score : {hiderScore}";
+        seekerScoreText.text = $"Seeker Score : {seekerScore}";
+        TotalScore.text = $"Total Score : {totalScore}";
+        if (targetfound)
         {
-            FinalText.text = "Hider Win, nice hiding place";
+            FinalText.text = "Welldone, deal carried out";
         }
         else
         {
-            FinalText.text = "Seeker Win, what sense of observation";
+            FinalText.text = "Shame on you, bad dealer";
         }
     }
 }
