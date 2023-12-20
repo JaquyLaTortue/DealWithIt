@@ -5,22 +5,31 @@ using UnityEngine.InputSystem;
 
 public class PlaceObject : MonoBehaviour
 {
+    [Header("Object")]
     //Store the Object you want to place in the scene in the inspector
     [SerializeField] GameObject _object;
     [SerializeField] GameObject ghost;
     GameObject _ghost;
     Vector3 objectOffSet = new();
+
+    [Header("Limits")]
     public LayerMask layerMask;
     [SerializeField] int range = 15;
     bool _canPlace = true;
+    public float time { get; private set; } = 0 ;
+    bool placeStarted = false;
+    bool ObjectPlaced = false;
 
+    [Header("Scripts References")]
     [SerializeField] CursorManager _cursorManager;
     [SerializeField] PlayerInput _playerInput;
 
+    //Store the object placed in the scene
     GameObject _placedObject;
 
     RaycastHit hit;
 
+    [Header("UI References")]
     //UI to show when the object is placed
     [SerializeField] GameObject _objectPlacedUI;
     [SerializeField] TMP_Text _validateText;
@@ -29,10 +38,15 @@ public class PlaceObject : MonoBehaviour
     //Events triggered when the phase is over
     public event Action OnPhaseEnded;
 
-    [SerializeField] bool PlaceMode;
+    //Define wich mode is used to place the object
+    bool PlaceMode;
 
     private void Update()
     {
+        if (placeStarted&&ObjectPlaced)
+        {
+            time += Time.deltaTime;
+        }
         //Display a ghost object to show where the object will be placed if it is possible
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, layerMask) && _placedObject == null)
         {
@@ -50,6 +64,7 @@ public class PlaceObject : MonoBehaviour
             }
             else //Set an offset to the object to place it on the wall
             {
+                _ghost.transform.rotation = Quaternion.identity;
                 if (hit.normal.y > .5f)
                 {
                     _ghost.transform.position = hit.point;
@@ -96,6 +111,11 @@ public class PlaceObject : MonoBehaviour
         objectOffSet = offset;
     }
 
+    public void StartTimer()
+    {
+        placeStarted = true;
+    }
+
     //Place the object where the ghost object is
     public void OnPlace(InputAction.CallbackContext ctx)
     {
@@ -120,6 +140,7 @@ public class PlaceObject : MonoBehaviour
     public void ValidatePlacement(InputAction.CallbackContext ctx)
     {
         if (!ctx.started || _placedObject == null) return;
+        ObjectPlaced = true;
         OnPhaseEnded?.Invoke();
     }
 

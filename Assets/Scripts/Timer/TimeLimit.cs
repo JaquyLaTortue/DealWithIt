@@ -1,48 +1,70 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class TimeLimit : MonoBehaviour
 {
-    public float temps = 10;
-    public TMP_Text timertext;
-    public int tempsint;
+    [Header("Time Limit in seconds")]
+    //Time limit in seconds
+    public int initialTime = 300;
+    public float time=0;
+    int tempsint;
 
-    public GameObject EndOfTime;
-    
-   
+    [Header("References")]
+    [SerializeField] TMP_Text timertext;
+    [SerializeField] GameObject FinishedUI;
+    [SerializeField] SwitchPhase _switchPhase;
 
-    void Start()
+    [Header("Bools")]
+    bool isFinished = false;
+    bool started = false;
+
+    public event Action<bool> OnTimerEnded;
+
+    private void Start()
     {
-        EndOfTime.SetActive(false);
+        _switchPhase.OnGuessStart += StartTimer;
+        _switchPhase.OnGameEnded += StopTimer;
+        time = initialTime;
     }
-
     void Update()
     {
-        tempsint = Mathf.RoundToInt(temps);
-        if (temps >= 0)
+        if (!isFinished && started)
         {
-            temps -= Time.deltaTime;
-            float min = Mathf.FloorToInt(temps / 60);
-            float sec = Mathf.FloorToInt(temps % 60);
-            if (sec < 10)
+            if (time > 0)
             {
-                timertext.text = ($"0{min} : 0{sec}");
-                return;
+                time -= Time.deltaTime;
+                //tempsint = Mathf.RoundToInt(time);
+
+                float min = Mathf.FloorToInt(time / 60);
+                float sec = Mathf.FloorToInt(time % 60);
+                if (sec < 10)
+                {
+                    timertext.text = ($"0{min} : 0{sec}");
+                    return;
+                }
+                else
+                {
+                    timertext.text = ($"0{min} : {sec}");
+                }
             }
-            timertext.text = ($"0{min} : {sec}");
-
+            else if (time <= 0)
+            {
+                timertext.text = "00 : 00";
+                isFinished = true;
+                FinishedUI.SetActive(true);
+                OnTimerEnded?.Invoke(false);
+            }
         }
-        else if (temps <= 0 && !EndOfTime.activeSelf) 
-        {
-            Appear();
-        }
-        
-        
     }
 
-    void Appear()
+    void StartTimer()
     {
-        EndOfTime.SetActive(true);
+        started = true;
     }
-    
+
+    void StopTimer(bool uselessBool)
+    {
+        isFinished = true;
+    }
 }

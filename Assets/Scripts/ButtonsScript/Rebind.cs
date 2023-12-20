@@ -12,11 +12,11 @@ public class Rebind : MonoBehaviour
     [SerializeField] TMP_Text guessRebindText;
 
     [Header("Input Actions")]
-    [SerializeField] InputActionReference _placeAction;
-    [SerializeField] InputActionReference _cancelPlacementAction;
-    [SerializeField] InputActionReference _validatePlacementAction;
-    [SerializeField] InputActionReference _changePlacementAction;
-    [SerializeField] InputActionReference _guessAction;
+    public InputActionReference _placeAction;
+    public InputActionReference _cancelPlacementAction;
+    public InputActionReference _validatePlacementAction;
+    public InputActionReference _changePlacementAction;
+    public InputActionReference _guessAction;
 
     [Header("Rebind UI")]
     [SerializeField] GameObject RebindUI;

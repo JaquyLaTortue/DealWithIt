@@ -10,6 +10,7 @@ public class SwitchPhase : MonoBehaviour
     [SerializeField] PlaceObject _placeObjectScript;
     [SerializeField] CursorManager _cursorManager;
     [SerializeField] Score _score;
+    [SerializeField] TimeLimit _timer;
 
     [Header("Player References & Camera")]
     [SerializeField] GameObject hider;
@@ -43,10 +44,14 @@ public class SwitchPhase : MonoBehaviour
     bool targetFound = false;
 
     public event Action<bool> OnGameEnded;
+    public event Action OnGuessStart;
+
     void Start()
     {
         _placeObjectScript.OnPhaseEnded += PlaceFadeOut;
         _guessScript.OnPhaseEnded += GuessEnded;
+
+        _timer.OnTimerEnded += GuessEnded;
 
         _generalCanvasAnimator = generalCanvas.GetComponent<Animator>();
         _hiderCanvasAnimator = hiderCanvas.GetComponent<Animator>();
@@ -80,6 +85,7 @@ public class SwitchPhase : MonoBehaviour
     {
         hider.SetActive(true);
         hiderCanvas.SetActive(true);
+        _placeObjectScript.StartTimer();
         _hiderCanvasAnimator.SetTrigger("FadeIn");
         _cursorManager.SetSpecialCursor();
     }
@@ -130,11 +136,11 @@ public class SwitchPhase : MonoBehaviour
         seekerCanvas.SetActive(true);
         seekerCanvas.GetComponent<Animator>().SetTrigger("SeekerFadeIn");
         _cursorManager.SetSpecialCursor();
+        OnGuessStart?.Invoke();
     }
 
     public void GuessEnded(bool _targetFound)
     {
-        //_score.CalculateScore(_targetFound);
         targetFound = _targetFound;
         seekerCamera.GetComponent<Cam_Controler>().enabled = false;
         seeker.GetComponent<PlayerInput>().enabled = false;
