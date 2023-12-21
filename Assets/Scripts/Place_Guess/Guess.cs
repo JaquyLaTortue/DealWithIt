@@ -58,7 +58,8 @@ public class Guess : MonoBehaviour
     {
         remainingGuess--;
         go.transform.DOShakeRotation(1f, 90, 10, 90, false);
-        guessResult.text = "You found the target";
+        guessResult.text = $"Remaining Guess : {remainingGuess}\n" +
+            $"You found the target";
         GuessEnd(true);
     }
 
@@ -68,7 +69,8 @@ public class Guess : MonoBehaviour
     {
         remainingGuess--;
         go.transform.DOShakePosition(1f, 0.1f, 10, 90, false, true);
-        guessResult.text = "You found a prop";
+        guessResult.text = $"Remaining Guess : {remainingGuess}\n"
+            + "You found a prop";
         if (remainingGuess <= 0)
         {
             GuessEnd(false);
@@ -78,21 +80,22 @@ public class Guess : MonoBehaviour
     //Called when the player failed a guess on nothing 
     void FailedGuess()
     {
-        guessResult.text = "Try again You found nothing and you can't find air ou a wall";
+        guessResult.text = $"Remaining Guess : {remainingGuess}\n" +
+            "Try again You found nothing and you can't find air ou a wall";
     }
 
     void GuessEnd(bool TargetFound)
     {
-        
+
         if (TargetFound)
         {
             Debug.Log($"You found the target");
-        OnPhaseEnded?.Invoke(true);
+            OnPhaseEnded?.Invoke(true);
         }
         else
         {
             Debug.Log($"You didn't find the target");
-        OnPhaseEnded?.Invoke(false);
+            OnPhaseEnded?.Invoke(false);
         }
     }
 }

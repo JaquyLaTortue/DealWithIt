@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialSpeed: 5
   groundDrag: 5
-  airMultiplier: 0
+  airMultiplier: 0.3
   playerHeight: 1
   whatisGround:
     serializedVersion: 2
