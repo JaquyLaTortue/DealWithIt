@@ -5,17 +5,17 @@ public class ChooseSize : MonoBehaviour
 {
     [SerializeField] PlaceObject placeObject;
 
-    [Header("Objects")]
+    [Header("props")]
     [SerializeField] GameObject smallObject;
     [SerializeField] GameObject mediumObject;
     [SerializeField] GameObject largeObject;
 
-    [Header("Ghost Objects")]
+    [Header("Ghost props")]
     [SerializeField] GameObject ghostSmallObject;
     [SerializeField] GameObject ghostMediumObject;
     [SerializeField] GameObject ghostLargeObject;
 
-    [Header("Objects Offsets")]
+    [Header("props Offsets")]
     [SerializeField] Vector3 smallOffset;
     [SerializeField] Vector3 mediumOffset;
     [SerializeField] Vector3 largeOffset;

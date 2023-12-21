@@ -4,31 +4,51 @@ using UnityEngine;
 
 public class RandomSkins : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> Objects = new() { };
-    [SerializeField] public List<Material> Skins = new() { };
+    [Header("Prop List")]
+    [SerializeField] public List<GameObject> props = new();
+    [SerializeField] public List<Material> Skins = new();
 
+    [Header("Toggle if the prop is a composed mesh")]
+    public bool compositeMeshe = false;
+    public int MeshesCount = 0;
+    int index = 1;
+    Material actualMaterial;
     private Material RandomMaterial()
     {
-        Material Materiaux = Skins[Random.Range(0, Skins.Count - 1)];
+        Material Materiaux = Skins[Random.Range(0, Skins.Count)];
         return Materiaux;
     }
 
     void Start()
     {
-        for(int i = 0; i <= Objects.Count - 1; i++ )
+        if (!compositeMeshe)
         {
-
-            GameObject SelectedObjects = Objects[i];
-
-            SelectedObjects.GetComponent<SpriteRenderer>().material = RandomMaterial();
+            for (int i = 0; i <= props.Count - 1; i++)
+            {
+                props[i].GetComponent<MeshRenderer>().material = RandomMaterial();
+            }
         }
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        else
+        {
+            for (int i = 0; i < props.Count; i++)
+            {
+                if (index == 1)
+                {
+                    actualMaterial = RandomMaterial();
+                    props[i].GetComponent<MeshRenderer>().material = actualMaterial;
+                    index++;
+                }
+                else if (index < MeshesCount)
+                {
+                    props[i].GetComponent<MeshRenderer>().material = actualMaterial;
+                    index++;
+                }
+                else if (index == MeshesCount)
+                {
+                    props[i].GetComponent<MeshRenderer>().material = actualMaterial;
+                    index = 1;
+                }
+            }
+        }
     }
 }

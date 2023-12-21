@@ -16,6 +16,7 @@ public class Move : MonoBehaviour
     public float playerHeight;
     public LayerMask whatisGround;
     bool grounded;
+    bool groundedByCollider;
 
     [Header("Axis")]
     private float _horizontalInput;
@@ -82,5 +83,4 @@ public class Move : MonoBehaviour
             rb.AddForce(_moveDirection.normalized * Speed * 1f * airMultiplier, ForceMode.Force);
         }
     }
-
 }
