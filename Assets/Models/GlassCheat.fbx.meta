@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b406277330255ba41a8bfbc34eb2ad7a
+guid: c67f6ff5512a11948b6232b8bd133bd7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Light
-    second: {fileID: 2100000, guid: 4a024ef2cda0e6341bf51dbeae503fbc, type: 2}
+      name: M_Glasscheat
+    second: {fileID: 2100000, guid: d9cb296521ad0d744a8eec46c4cd377c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
