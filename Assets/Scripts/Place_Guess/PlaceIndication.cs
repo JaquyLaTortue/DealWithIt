@@ -19,8 +19,8 @@ public class PlaceIndication : MonoBehaviour
 
     [Header("Indications")]
     [SerializeField] List<string> Color = new() {"Green" , "Red", "Yellow", "Blue", "Purple", "Orange", "Cyan", "White", "Black", "Grey"};
-    [SerializeField] List<string> Adjectif = new() {"Stable", "Reachable", "Heavy", "Unreachable", "Tough", "Light", "Wood", "Paper", "Carpet", "Iron"};
-    [SerializeField] List<string> Forme = new() {"Round", "Square", "Triangle", "Star", "Long", "Big", "Small", "Short", "Oval", "Medium"};
+    [SerializeField] List<string> Adjectif = new() {"Stable", "Reachable", "Heavy", "Unreachable", "Tough", "Light", "Wood", "Glass", "Carpet", "Iron"};
+    [SerializeField] List<string> Forme = new() {"Round", "Square", "Long", "Big", "Small", "Short", "Oval", "Medium"};
 
     string[] Indications = new string[3];
     void RandomChoice()
