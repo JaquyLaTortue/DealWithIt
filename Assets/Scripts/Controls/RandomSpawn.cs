@@ -9,7 +9,6 @@ public class RandomSpawn : MonoBehaviour
     public Transform SetRandomSpawn()
     {
         GameObject ChoosedSpawn = spawnPoints[Random.Range(0, spawnPoints.Length - 1)];
-        Debug.Log(ChoosedSpawn.name);
         return ChoosedSpawn.transform;
     }
 }
