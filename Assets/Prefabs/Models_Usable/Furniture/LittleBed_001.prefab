@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 105766423017614772, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
       propertyPath: m_Name
       value: LittleBed_001
@@ -60,13 +64,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 5274286118554826898, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5274286118554826898, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 6516407968617763576, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516407968617763576, guid: d429f7dadbc669c44a06f2edc5b851b9, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
