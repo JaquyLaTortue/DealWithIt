@@ -16,7 +16,6 @@ public class Move : MonoBehaviour
     public float playerHeight;
     public LayerMask whatisGround;
     bool grounded;
-    bool groundedByCollider;
 
     [Header("Axis")]
     private float _horizontalInput;

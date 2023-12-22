@@ -27,12 +27,12 @@ public class RulesDisplay : MonoBehaviour
             $"\n" +
             $"- He must follow the instructions displayed so the seeker will have a chance to find it \n" +
             $"\n" +
-            $"- He can place the object he choosed by clicking {InputControlPath.ToHumanReadableString(_rebind._placeAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} \n" +
+            $"- He can place the object he choosed by clicking ( {InputControlPath.ToHumanReadableString(_rebind._placeAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} ) \n" +
             $"\n" +
-            $"- He can cancel the placement of the object by clicking {InputControlPath.ToHumanReadableString(_rebind._cancelPlacementAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} " +
-            $"and validate his placement by clicking {InputControlPath.ToHumanReadableString(_rebind._validatePlacementAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} \n" +
+            $"- He can cancel the placement of the object by clicking ( {InputControlPath.ToHumanReadableString(_rebind._cancelPlacementAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} ) " +
+            $"or validate the placement by clicking ( {InputControlPath.ToHumanReadableString(_rebind._validatePlacementAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} ) \n" +
             $"\n" +
-            $"- He can change the placement mode by clicking {InputControlPath.ToHumanReadableString(_rebind._changePlacementAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)}";
+            $"- He can change the placement mode by clicking ( {InputControlPath.ToHumanReadableString(_rebind._changePlacementAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} )";
     }
 
     void UpdateSeekerRules()
@@ -42,7 +42,7 @@ public class RulesDisplay : MonoBehaviour
             $"\n" +
             $"- He have to follow the instructions displayed to find the object \n" +
             $"\n" +
-            $"- He can try to guess if an object is the one that the hider placed by clicking {InputControlPath.ToHumanReadableString(_rebind._guessAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} \n" +
+            $"- He can try to guess if an object is the one that the hider placed by clicking ( {InputControlPath.ToHumanReadableString(_rebind._guessAction.action.bindings[0].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice)} ) \n" +
             $"\n" +
             $"- But he have a certain amount of tries \n" +
             $"\n" +

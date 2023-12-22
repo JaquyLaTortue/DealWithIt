@@ -33,6 +33,8 @@ public class Guess : MonoBehaviour
         OnTargetFound += SuccessfulGuess;
         OnPropGuess += PropGuess;
         OnFailedGuess += FailedGuess;
+
+        guessResult.text = $"Remaining Guess : {remainingGuess}";
     }
 
     public void OnGuess(InputAction.CallbackContext ctx)

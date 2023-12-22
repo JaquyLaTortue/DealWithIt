@@ -16,7 +16,7 @@ public class PlaceObject : MonoBehaviour
     public LayerMask layerMask;
     [SerializeField] int range = 15;
     bool _canPlace = true;
-    public float time { get; private set; } = 0 ;
+    public float time { get; private set; } = 0;
     bool placeStarted = false;
     bool ObjectPlaced = false;
 
@@ -47,7 +47,7 @@ public class PlaceObject : MonoBehaviour
 
     private void Update()
     {
-        if (placeStarted&&ObjectPlaced)
+        if (placeStarted && ObjectPlaced)
         {
             time += Time.deltaTime;
         }

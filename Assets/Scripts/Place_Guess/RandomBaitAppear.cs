@@ -7,6 +7,7 @@ public class RandomBaitAppear : MonoBehaviour
     private void Start()
     {
         int randomint = Random.Range(40, baits.Length-30);
+        Debug.Log(randomint);
         for (int i = 0; i < randomint; i++)
         {
             GameObject CurrentBait = baits[Random.Range(0, randomint)];

@@ -7,8 +7,7 @@ public class TimeLimit : MonoBehaviour
     [Header("Time Limit in seconds")]
     //Time limit in seconds
     public int initialTime = 300;
-    public float time=0;
-    int tempsint;
+    public float time = 0;
 
     [Header("References")]
     [SerializeField] TMP_Text timertext;
@@ -17,7 +16,7 @@ public class TimeLimit : MonoBehaviour
 
     [Header("Bools")]
     bool isFinished = false;
-    bool started = false;
+    public bool started = false;
 
     public event Action<bool> OnTimerEnded;
 

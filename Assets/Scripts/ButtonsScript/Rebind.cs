@@ -11,13 +11,11 @@ public class Rebind : MonoBehaviour
     [SerializeField] TMP_Text ChangePlacementRebindText;
     [SerializeField] TMP_Text OpenHiderText;
     [SerializeField] TMP_Text CloseHiderText;
-    [SerializeField] TMP_Text CrouchHiderText;
 
     [Header("Seeker Rebind Text")]
     [SerializeField] TMP_Text guessRebindText;
     [SerializeField] TMP_Text OpenSeekerText;
     [SerializeField] TMP_Text CloseSeekerText;
-    [SerializeField] TMP_Text CrouchSeeekerText;
 
     [Header("Hider Input Actions")]
     public InputActionReference _placeAction;
