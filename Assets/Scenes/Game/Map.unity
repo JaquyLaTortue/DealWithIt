@@ -8954,6 +8954,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3069180926652658506, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
+      propertyPath: InitialSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069180926652658506, guid: 691d0cb8149c31c418085f816a555e54, type: 3}
       propertyPath: _randomSpawn
       value: 
       objectReference: {fileID: 441532852}
@@ -36977,7 +36981,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -49626,6 +49630,10 @@ PrefabInstance:
     - target: {fileID: 5129914622356413154, guid: 36c551e6efafd6b469ba3e14ce4e8d86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073383692848867671, guid: 36c551e6efafd6b469ba3e14ce4e8d86, type: 3}
+      propertyPath: InitialSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7073383692848867671, guid: 36c551e6efafd6b469ba3e14ce4e8d86, type: 3}
       propertyPath: _randomSpawn
